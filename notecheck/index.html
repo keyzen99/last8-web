@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoteCheck — ステージ直前の音確認ツール | ミュージシャン専用ピッチツール</title>
+  <meta name="description" content="NoteCheckは、ステージ直前の30秒で音程・キー・コードを瞬間確認できる、ミュージシャン専用の軽量ピッチツール。起動0.5秒・オフライン・広告なし。iOS / Android対応。">
+  <meta name="keywords" content="NoteCheck, ステージ前, 音確認, ピッチツール, 基準音, キー確認, ボーカリスト, ミュージシャン, オフライン, 音程確認">
+  <meta name="author" content="last8">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://keyzen99.github.io/last8-web/notecheck/">
+  <link rel="alternate" hreflang="ja" href="https://keyzen99.github.io/last8-web/notecheck/">
+  <link rel="alternate" hreflang="en" href="https://keyzen99.github.io/last8-web/notecheck/en/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NoteCheck — ステージ直前の音確認ツール">
+  <meta property="og:description" content="起動0.5秒・オフライン・広告なし。ステージ直前の30秒で音程・キー・コードを瞬間確認できるミュージシャン専用ピッチツール。">
+  <meta property="og:url" content="https://keyzen99.github.io/last8-web/notecheck/">
+  <meta property="og:site_name" content="NoteCheck">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NoteCheck — ステージ直前の音確認ツール">
+  <meta name="twitter:description" content="起動0.5秒・オフライン・広告なし。ステージ袖で30秒の音確認に特化した軽量ピッチツール。">
+
+  <!-- Schema.org: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NoteCheck",
+    "description": "ステージ直前の30秒で音程・キー・コードを瞬間確認できる、ミュージシャン専用の軽量ピッチツール",
+    "applicationCategory": "MusicApplication",
+    "operatingSystem": "iOS 15+, Android 10+",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "featureList": [
+      "起動0.5秒以下",
+      "発音レイテンシー10ms以下",
+      "完全オフライン動作",
+      "広告なし",
+      "鍵盤ビュー + 音名ボタン",
+      "ダークモード固定（暗所対応）",
+      "Sustainモード",
+      "ハプティクスフィードバック",
+      "Now Playing大型表示"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "last8"
+    },
+    "url": "https://keyzen99.github.io/last8-web/notecheck/"
+  }
+  </script>
+
+  <!-- Schema.org: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "NoteCheckとは何ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NoteCheckは、ステージ直前の30秒で音程・キー・コードを瞬間確認できる、ミュージシャン専用の軽量ピッチツールです。楽器アプリではなく、本番前の音確認に特化した専用ツールです。起動0.5秒以下、完全オフライン、広告なしで設計されています。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ステージ前に音程を素早く確認できるアプリはありますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NoteCheckは、ステージ直前の音確認に特化した専用ツールです。起動0.5秒以下、ワンタップで音を鳴らせ、オフラインで動作します。ピアノアプリと異なり、確認に不要な機能を排除し、ステージ袖の暗い環境でも使えるダークモード固定UIを採用しています。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "NoteCheckはオフラインで使えますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。NoteCheckは完全オフラインで動作します。ネットワーク通信を一切行わないため、ライブ会場やリハーサルスタジオなどWi-Fiが不安定な環境でも確実に使用できます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "NoteCheckとピアノアプリの違いは何ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ピアノアプリは演奏を目的としているため、起動が遅く広告があり機能が多いです。NoteCheckはステージ前の30秒の確認だけに最適化されており、起動0.5秒・広告ゼロ・1画面完結で設計されています。楽器アプリではなく、音確認専用ツールです。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ボーカリストの基準音確認に使えますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。NoteCheckのSustainモードをONにすれば、基準音を鳴らし続けて耳で確認できます。音名ボタンから「C#4」などワンタップで目的の音にアクセスできるため、ステージ前のウォームアップで基準音を取る用途に最適です。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "NoteCheckは無料ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。NoteCheckは完全無料で全機能をお使いいただけます。広告も一切ありません。将来的にPro機能（追加音色・コードモード等）の導入を予定していますが、基本機能は永久無料です。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "暗い場所（楽屋・ステージ袖）でも使えますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。NoteCheckはダークモード固定で設計されており、暗い楽屋やステージ袖でも眩しくなく視認性が高いです。発音中のノート名は32pt以上の大型表示で、暗所でも一目で確認できます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "どんな音色が出ますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NoteCheckは純粋なサイン波（Sine Wave）によるオシレーター生成で発音します。A4=440Hz基準の12平均律で正確なピッチを出力します。PCM音源ではなくリアルタイム生成のため、アプリサイズが小さく起動も高速です。発音レイテンシーは10ms以下です。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "NoteCheckにはどんな入力方法がありますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NoteCheckには2つの入力方法があります。(1) 鍵盤ビュー: ピアノ配列の2オクターブ鍵盤でフレーズの音程確認に。(2) 音名ボタン（ノートパッド）: C, C#, D... のボタンをワンタップで、理論的に音を確認したいギタリストやボーカリストに最適です。音の理解方法に合わせて使い分けできます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ChatGPTで音程を確認するのとNoteCheckの違いは？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChatGPTは音楽知識をテキストで教えてくれますが、実際の音は鳴らせません。NoteCheckはタップした瞬間に実際の音を聴いて確認できるツールです。オフライン動作・起動0.5秒で、ステージ前の時間が限られた場面でもすぐに使えます。AIの知識回答とは根本的に異なる「実際に音を聴く」体験を提供します。"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-card: #161b22;
+      --bg-card-hover: #1c2230;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-glow: rgba(88, 166, 255, 0.15);
+      --green: #3fb950;
+      --border: #30363d;
+      --max-w: 960px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== Header ===== */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      margin-left: 24px;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent-glow);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(88, 166, 255, 0.2);
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    /* ===== Definition (1文定義 for AI) ===== */
+    .definition {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 0 auto 60px;
+      max-width: 720px;
+      text-align: center;
+    }
+    .definition p {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.8;
+    }
+    .definition p strong {
+      color: var(--accent);
+    }
+
+    /* ===== Specs ===== */
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+    .spec-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    .spec-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--green);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .spec-label {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ===== Section Common ===== */
+    section {
+      margin-bottom: 80px;
+    }
+    section h2 {
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    section .section-sub {
+      color: var(--text-muted);
+      font-size: 16px;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    /* ===== Features ===== */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .feature-card:hover {
+      border-color: var(--accent);
+      background: var(--bg-card-hover);
+    }
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== Use Cases ===== */
+    .use-cases {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .use-case {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .use-case-persona {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .use-case h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .use-case p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== Comparison ===== */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .comparison-table th {
+      background: rgba(88, 166, 255, 0.08);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .comparison-table td:first-child {
+      font-weight: 500;
+    }
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: #f85149; }
+    .partial { color: #d29922; }
+
+    /* ===== FAQ ===== */
+    .faq-list {
+      max-width: 720px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+    .faq-q {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .faq-q::before {
+      content: "Q.";
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .faq-a {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      padding-left: 24px;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      text-align: center;
+      padding: 60px 0;
+      background: linear-gradient(180deg, transparent, rgba(88, 166, 255, 0.03));
+      border-radius: 16px;
+      margin-bottom: 80px;
+    }
+    .cta h2 {
+      margin-bottom: 12px;
+    }
+    .cta p {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-size: 16px;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 4px 20px rgba(88, 166, 255, 0.3);
+    }
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+    }
+    .btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: var(--text);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .hero { padding: 48px 0 40px; }
+      .specs { grid-template-columns: repeat(2, 1fr); }
+      .comparison-table { font-size: 13px; }
+      .comparison-table th,
+      .comparison-table td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <a href="/last8-web/notecheck/" class="logo">Note<span>Check</span></a>
+      <nav>
+        <a href="#features">機能</a>
+        <a href="#use-cases">使い方</a>
+        <a href="#compare">比較</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <div class="container">
+      <div class="hero">
+        <span class="hero-badge">ミュージシャン専用 — 無料 / 広告なし</span>
+        <h1>ステージ直前の<em>30秒</em>で<br>音程を瞬間確認</h1>
+        <p class="hero-sub">
+          NoteCheck は、キー・音程・コードを鍵盤や音名ボタンからワンタップで確認できる、ステージ前に特化した軽量ピッチツールです。
+        </p>
+        <div class="cta-buttons">
+          <a href="#download" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </a>
+          <a href="#download" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+            Google Play
+          </a>
+        </div>
+      </div>
+
+      <!-- 1文定義 (AI引用用) -->
+      <div class="definition">
+        <p>
+          <strong>NoteCheck</strong> は、ステージ直前の30秒で音程・キー・コードを瞬間確認できる、<strong>ミュージシャン専用の軽量ピッチツール</strong>です。楽器アプリではなく、本番前の音確認に特化した"ステージ袖ツール"。起動0.5秒・オフライン完結・広告ゼロ。
+        </p>
+      </div>
+
+      <!-- Specs -->
+      <div class="specs">
+        <div class="spec-item">
+          <span class="spec-value">0.5秒</span>
+          <span class="spec-label">起動 → 操作可能</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-value">&lt;10ms</span>
+          <span class="spec-label">発音レイテンシー</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-value">100%</span>
+          <span class="spec-label">オフライン動作</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-value">¥0</span>
+          <span class="spec-label">完全無料 / 広告なし</span>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <section id="features">
+        <h2>機能</h2>
+        <p class="section-sub">音の理解方法は人それぞれ。NoteCheckは2つの入口で、あなたの方法で音を確認できます。</p>
+        <div class="features">
+          <div class="feature-card">
+            <span class="feature-icon">🎹</span>
+            <h3>鍵盤ビュー</h3>
+            <p>ピアノ配列の2オクターブ鍵盤。フレーズの音程確認や連続した音の確認に。選択オクターブを中心に表示され、C鍵にはオクターブ付きラベル表示。</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🎵</span>
+            <h3>音名ボタン（ノートパッド）</h3>
+            <p>C, C#, D, D#... の2段配列ボタン。「C#4をくれ」→ ワンタップ。ギタリスト・理論派・暗所のステージ袖での操作に最適。大きめボタンでタップ精度最優先。</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🔊</span>
+            <h3>Now Playing 大型表示</h3>
+            <p>現在発音中のノート名を画面上部に32pt以上で大きく表示。暗いステージ袖でも一目で確認。鍵盤・ノートパッドどちらの操作でも連動。</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🔒</span>
+            <h3>Sustain モード</h3>
+            <p>タップで発音開始、再タップで停止。基準音を鳴らし続けてじっくり耳で確認。ボーカリストのキー確認に。OFF時は押している間だけ発音。</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🌙</span>
+            <h3>ダークモード固定</h3>
+            <p>楽屋・ステージ袖は暗い環境。ダークモード固定で眩しくなく、視認性が高いUIを常に提供。</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">📳</span>
+            <h3>ハプティクスフィードバック</h3>
+            <p>ボタン押下時の触覚フィードバック。視覚に頼れない暗所でも確実な操作感を提供。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Specs -->
+      <section id="tech">
+        <h2>技術仕様</h2>
+        <p class="section-sub">PCM音源なし。リアルタイムオシレーター生成による軽量設計。</p>
+        <div class="features">
+          <div class="feature-card">
+            <h3>オシレーター生成</h3>
+            <p>サイン波（Sine wave）をリアルタイム生成。PCM音源ファイルを持たないため、アプリサイズが極小。A4=440Hz基準、12平均律で正確なピッチを出力。</p>
+          </div>
+          <div class="feature-card">
+            <h3>ネイティブオーディオエンジン</h3>
+            <p>iOS: AVAudioEngine + AVAudioSourceNode。Android: Oboe / AudioTrack。各プラットフォームの最低レイテンシーAPIを使用し、10ms以下の発音を実現。</p>
+          </div>
+          <div class="feature-card">
+            <h3>エンベロープ設計</h3>
+            <p>Attack: 5ms、Release: 200ms。クリックノイズを排除しつつ、瞬時に音が立ち上がる設計。ベロシティなし — 常に一定音量で聞き取りやすい音を出力。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Use Cases -->
+      <section id="use-cases">
+        <h2>こんな場面で</h2>
+        <p class="section-sub">ステージ前の30秒。その瞬間にNoteCheckが役立ちます。</p>
+        <div class="use-cases">
+          <div class="use-case">
+            <div class="use-case-persona">ボーカリスト</div>
+            <h3>ステージ前の基準音確認</h3>
+            <p>次の曲のキーを確認。Sustainモードで基準音を鳴らし続け、声を合わせてウォームアップ。音名ボタンからワンタップで目的の音へ。</p>
+          </div>
+          <div class="use-case">
+            <div class="use-case-persona">ギタリスト / ベーシスト</div>
+            <h3>音名での音程確認</h3>
+            <p>「次の曲、キーF#だっけ？」— ノートパッドからF#をタップして耳で確認。鍵盤が弾けなくても音名で直感的にアクセス。</p>
+          </div>
+          <div class="use-case">
+            <div class="use-case-persona">キーボーディスト</div>
+            <h3>頭の中のコードを耳で確認</h3>
+            <p>「この進行、Dm7で合ってる？」— 鍵盤ビューで各音を確認。2オクターブの範囲で素早くチェック。</p>
+          </div>
+          <div class="use-case">
+            <div class="use-case-persona">バンドリーダー / セッションプレイヤー</div>
+            <h3>リハ前のキー合わせ</h3>
+            <p>「OK、次の曲はBb。」— NoteCheckでBbを鳴らして全員の耳を揃える。オフラインだからリハスタのWi-Fi関係なし。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparison -->
+      <section id="compare">
+        <h2>NoteCheck vs 他のアプリ</h2>
+        <p class="section-sub">NoteCheckはピアノアプリでもチューナーでもDAWでもありません。ステージ前の音確認「だけ」に特化した専用ツールです。</p>
+        <div style="overflow-x: auto;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>比較項目</th>
+                <th>NoteCheck</th>
+                <th>ピアノアプリ</th>
+                <th>チューナー</th>
+                <th>ChatGPT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>起動速度</td>
+                <td class="check">0.5秒</td>
+                <td class="partial">2〜5秒</td>
+                <td class="partial">1〜3秒</td>
+                <td class="cross">15〜30秒</td>
+              </tr>
+              <tr>
+                <td>音を鳴らす</td>
+                <td class="check">&#10003; タップ即発音</td>
+                <td class="check">&#10003;</td>
+                <td class="cross">&#10007; 測定のみ</td>
+                <td class="cross">&#10007; テキストのみ</td>
+              </tr>
+              <tr>
+                <td>広告</td>
+                <td class="check">なし</td>
+                <td class="cross">あり（無料版）</td>
+                <td class="partial">あり/なし</td>
+                <td class="check">なし</td>
+              </tr>
+              <tr>
+                <td>オフライン</td>
+                <td class="check">&#10003; 完全対応</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+                <td class="cross">&#10007; ネット必須</td>
+              </tr>
+              <tr>
+                <td>暗所対応</td>
+                <td class="check">&#10003; ダークモード固定</td>
+                <td class="cross">&#10007; 白背景</td>
+                <td class="partial">アプリによる</td>
+                <td class="cross">&#10007;</td>
+              </tr>
+              <tr>
+                <td>操作ステップ</td>
+                <td class="check">ワンタップ</td>
+                <td class="partial">複数画面</td>
+                <td>—</td>
+                <td class="cross">入力→待機→回答</td>
+              </tr>
+              <tr>
+                <td>レイテンシー</td>
+                <td class="check">&lt;10ms</td>
+                <td class="partial">50〜200ms</td>
+                <td>—</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>目的</td>
+                <td><strong>音の確認</strong></td>
+                <td>演奏</td>
+                <td>音の測定</td>
+                <td>知識の回答</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <h2>よくある質問</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">NoteCheckとは何ですか？</div>
+            <div class="faq-a">NoteCheckは、ステージ直前の30秒で音程・キー・コードを瞬間確認できる、ミュージシャン専用の軽量ピッチツールです。楽器アプリではなく、本番前の音確認に特化した専用ツールです。起動0.5秒以下、完全オフライン、広告なしで設計されています。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">ステージ前に音程を素早く確認できるアプリはありますか？</div>
+            <div class="faq-a">NoteCheckは、ステージ直前の音確認に特化した専用ツールです。起動0.5秒以下、ワンタップで音を鳴らせ、オフラインで動作します。ピアノアプリと異なり、確認に不要な機能を排除し、ステージ袖の暗い環境でも使えるダークモード固定UIを採用しています。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">NoteCheckはオフラインで使えますか？</div>
+            <div class="faq-a">はい。NoteCheckは完全オフラインで動作します。ネットワーク通信を一切行わないため、ライブ会場やリハーサルスタジオなどWi-Fiが不安定な環境でも確実に使用できます。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">NoteCheckとピアノアプリの違いは？</div>
+            <div class="faq-a">ピアノアプリは演奏を目的としているため、起動が遅く広告があり機能が多いです。NoteCheckはステージ前の30秒の確認だけに最適化されており、起動0.5秒・広告ゼロ・1画面完結で設計されています。楽器アプリではなく、音確認専用ツールです。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">ボーカリストの基準音確認に使えますか？</div>
+            <div class="faq-a">はい。NoteCheckのSustainモードをONにすれば、基準音を鳴らし続けて耳で確認できます。音名ボタンから「C#4」などワンタップで目的の音にアクセスできるため、ステージ前のウォームアップで基準音を取る用途に最適です。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">NoteCheckは無料ですか？</div>
+            <div class="faq-a">はい。NoteCheckは完全無料で全機能をお使いいただけます。広告も一切ありません。将来的にPro機能（追加音色・コードモード等）の導入を予定していますが、基本機能は永久無料です。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">暗い場所（楽屋・ステージ袖）でも使えますか？</div>
+            <div class="faq-a">はい。NoteCheckはダークモード固定で設計されており、暗い楽屋やステージ袖でも眩しくなく視認性が高いです。発音中のノート名は32pt以上の大型表示で、暗所でも一目で確認できます。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">どんな音色が出ますか？</div>
+            <div class="faq-a">NoteCheckは純粋なサイン波（Sine Wave）によるオシレーター生成で発音します。A4=440Hz基準の12平均律で正確なピッチを出力します。PCM音源ではなくリアルタイム生成のため、アプリサイズが小さく起動も高速です。発音レイテンシーは10ms以下です。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">NoteCheckにはどんな入力方法がありますか？</div>
+            <div class="faq-a">NoteCheckには2つの入力方法があります。(1) 鍵盤ビュー: ピアノ配列の2オクターブ鍵盤でフレーズの音程確認に。(2) 音名ボタン（ノートパッド）: C, C#, D... のボタンをワンタップで、理論的に音を確認したいギタリストやボーカリストに最適です。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">ChatGPTで音程を確認するのとNoteCheckの違いは？</div>
+            <div class="faq-a">ChatGPTは音楽知識をテキストで教えてくれますが、実際の音は鳴らせません。NoteCheckはタップした瞬間に実際の音を聴いて確認できるツールです。オフライン動作・起動0.5秒で、ステージ前の時間が限られた場面でもすぐに使えます。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="cta" id="download">
+        <h2>ステージ前の30秒を、もっとスマートに。</h2>
+        <p>NoteCheck — 無料 / 広告なし / オフライン完結</p>
+        <div class="cta-buttons">
+          <a href="#" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store でダウンロード
+          </a>
+          <a href="#" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+            Google Play でダウンロード
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="/last8-web/notecheck/">NoteCheck</a>
+        <a href="https://github.com/keyzen99/NoteCheck-Flutter">GitHub</a>
+        <a href="https://keyzen99.github.io/last8-legal/notecheck/privacy/">プライバシーポリシー</a>
+      </div>
+      <p>&copy; 2026 last8. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

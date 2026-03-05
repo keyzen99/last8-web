@@ -147,6 +147,30 @@
           "@type": "Answer",
           "text": "AIチャットは音楽知識をテキストで教えてくれますが、実際の音は鳴らせません。NoteCheckはタップした瞬間に実際の音を聴いて確認できるツールです。オフライン動作・起動0.5秒で、ステージ前の時間が限られた場面でもすぐに使えます。AIの知識回答とは根本的に異なる「実際に音を聴く」体験を提供します。"
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Sustainモードとは何ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sustainモードは、タップした音を鳴らし続ける機能です。ONにすると1回タップで発音開始、再タップで停止します。基準音を鳴らしながら声を合わせるボーカルウォームアップや、バンド全員のキー合わせに便利です。モノフォニック設計で、次の音をタップすると前の音は自動的に止まります。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "NoteCheckのアプリサイズはどれくらいですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NoteCheckは30MB以下の軽量アプリです。PCM音源ファイルを持たず、リアルタイムオシレーター生成で発音するため、アプリサイズが極めて小さく、ダウンロードも一瞬で完了します。ストレージを圧迫しません。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "NoteCheckはどのデバイスで使えますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NoteCheckはiOS 15以上（iPhone / iPad）およびAndroid 10以上に対応しています。App StoreとGoogle Playからダウンロードできます。Flutter + ネイティブオーディオエンジン（iOS: AVAudioEngine / Android: Oboe）で、どちらのプラットフォームでも10ms以下の低レイテンシーを実現しています。"
+        }
       }
     ]
   }
@@ -796,6 +820,18 @@
           <div class="faq-item">
             <div class="faq-q">AIチャットで音程を確認するのとNoteCheckの違いは？</div>
             <div class="faq-a">AIチャットは音楽知識をテキストで教えてくれますが、実際の音は鳴らせません。NoteCheckはタップした瞬間に実際の音を聴いて確認できるツールです。オフライン動作・起動0.5秒で、ステージ前の時間が限られた場面でもすぐに使えます。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Sustainモードとは何ですか？</div>
+            <div class="faq-a">Sustainモードは、タップした音を鳴らし続ける機能です。ONにすると1回タップで発音開始、再タップで停止します。基準音を鳴らしながら声を合わせるボーカルウォームアップや、バンド全員のキー合わせに便利です。モノフォニック設計で、次の音をタップすると前の音は自動的に止まります。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">NoteCheckのアプリサイズはどれくらいですか？</div>
+            <div class="faq-a">NoteCheckは30MB以下の軽量アプリです。PCM音源ファイルを持たず、リアルタイムオシレーター生成で発音するため、アプリサイズが極めて小さく、ダウンロードも一瞬で完了します。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">NoteCheckはどのデバイスで使えますか？</div>
+            <div class="faq-a">iOS 15以上（iPhone / iPad）およびAndroid 10以上に対応しています。App StoreとGoogle Playからダウンロードできます。どちらのプラットフォームでもネイティブオーディオエンジンで10ms以下の低レイテンシーを実現しています。</div>
           </div>
         </div>
       </section>

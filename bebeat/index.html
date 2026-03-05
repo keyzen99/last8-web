@@ -202,7 +202,7 @@
         <div class="features">
           <div class="feature-card"><span class="feature-icon">🥁</span><h3>8トラック × 16ステップ</h3><p>Click H/L・Cymbal・HH Open/Close・Snare・Clap・Kickの8音色。タップでON/OFF、長押しでアクセント。自分好みのリズムパターンを自由に作成。</p></div>
           <div class="feature-card"><span class="feature-icon">🎯</span><h3>BPM 20〜200</h3><p>+/-ボタン・スライダー・タップテンポの3つの操作方法。前回のBPM設定は自動復元。</p></div>
-          <div class="feature-card"><span class="feature-icon">🎼</span><h3>4種類の拍子</h3><p>4/4・3/4・6/8・12/8に対応。拍子を変更するとステップ数が自動調整。ワルツからシャッフルまで。</p></div>
+          <div class="feature-card"><span class="feature-icon">🎼</span><h3>4種類の拍子</h3><p>4/4・3/4・6/8・12/8に対応。拍子を変更するとステップ数が自動調整。今後も対応拍子を追加予定。</p></div>
           <div class="feature-card"><span class="feature-icon">📊</span><h3>練習ログ（自動記録）</h3><p>30秒以上のセッションを自動記録。今日の練習時間・連続日数・日別グラフ・BPMトレンドで積み重ねを可視化。</p></div>
           <div class="feature-card"><span class="feature-icon">🔇</span><h3>広告なし</h3><p>無料版でも広告ゼロ。練習中に広告で集中を壊さない。それがBeBeat.の設計思想。</p></div>
         </div>
@@ -213,8 +213,8 @@
         <div class="engine-highlight"><span class="engine-value">P95 &lt; 2.2ms</span><p class="engine-label">95%のステップが理想タイミングから2.2ミリ秒以内で発音</p></div>
         <div class="features">
           <div class="feature-card"><h3>ネイティブオーディオスレッド</h3><p>iOS: AVAudioEngine + hostTimeスケジューリング。Android: AudioTrack + URGENT_AUDIO優先度スレッド。UIとは独立した専用スレッドで発音タイミングを制御。</p></div>
-          <div class="feature-card"><h3>PCMアルゴリズム合成</h3><p>サンプルファイルを使わず、アルゴリズムでドラム音を生成。808/909の質感を参考にしつつ、練習の邪魔にならない音色に設計。</p></div>
-          <div class="feature-card"><h3>一般アプリの10倍以上の精度</h3><p>一般的なメトロノームアプリのjitterは10〜50ms程度。BeBeat.はネイティブエンジンにより2.2ms以下を実現。</p></div>
+          <div class="feature-card"><h3>PCMアルゴリズム合成</h3><p>サンプルファイルを使わず、アルゴリズムでドラム音を生成。リズムマシンの質感を参考にしつつ、練習の邪魔にならない音色に設計。</p></div>
+          <div class="feature-card"><h3>P95 jitter &lt; 2.2ms</h3><p>Pixel 6での実測値。UIの負荷に影響されず、安定したリズムを提供。</p></div>
         </div>
       </section>
       <section id="log">
@@ -244,16 +244,16 @@
             <thead><tr><th>比較項目</th><th>BeBeat.</th><th>メトロノームアプリ</th><th>DAW / GarageBand</th><th>AIチャット</th></tr></thead>
             <tbody>
               <tr><td>リズムパターン</td><td class="check">8トラック×16ステップ</td><td class="partial">クリック音のみ</td><td class="check">高機能シーケンサー</td><td class="cross">&#10007; 再生不可</td></tr>
-              <tr><td>起動速度</td><td class="check">&lt; 1秒</td><td class="partial">普通</td><td class="cross">遅い（5〜10秒）</td><td class="cross">15〜30秒</td></tr>
-              <tr><td>広告</td><td class="check">なし</td><td class="cross">あり（無料版）</td><td class="check">なし</td><td class="check">なし</td></tr>
-              <tr><td>タイミング精度</td><td class="check">P95 &lt; 2.2ms</td><td class="partial">10〜50ms</td><td class="check">高精度</td><td>—</td></tr>
+              <tr><td>起動速度</td><td class="check">&lt; 1秒</td><td class="partial">普通</td><td class="partial">制作ツールのため時間がかかる</td><td class="cross">会話開始まで数秒</td></tr>
+              <tr><td>広告</td><td class="check">なし</td><td class="partial">アプリによる</td><td class="check">なし</td><td class="check">なし</td></tr>
+              <tr><td>タイミング精度</td><td class="check">P95 &lt; 2.2ms</td><td class="partial">アプリによる</td><td class="check">高精度</td><td>—</td></tr>
               <tr><td>練習ログ</td><td class="check">&#10003; 自動記録</td><td class="cross">&#10007; なし</td><td class="cross">&#10007; なし</td><td class="cross">&#10007; 不可</td></tr>
               <tr><td>オフライン</td><td class="check">&#10003; 完全対応</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007; ネット必須</td></tr>
               <tr><td>目的</td><td><strong>練習専用</strong></td><td>テンポ確認</td><td>音楽制作</td><td>知識の回答</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="comparison-note">※ 音楽制作にはDAW（GarageBand等）が適しています。BeBeat.は練習に特化した道具です。</p>
+        <p class="comparison-note">※ 音楽制作にはDAW（GarageBand等）が適しています。BeBeat.は練習に特化した道具です。<br><a href="/bebeat/compare/metronome/" style="color:var(--accent);">→ メトロノームアプリとの詳しい比較はこちら</a></p>
       </section>
       <section id="faq">
         <h2>よくある質問</h2>

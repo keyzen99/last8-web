@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoteCheck — Instant Pitch Reference for Musicians | Pre-Stage Tool</title>
+  <meta name="description" content="NoteCheck is a lightweight pitch tool for musicians to instantly check notes, keys, and chords in 30 seconds before going on stage. Launches in 0.5s, works offline, no ads. iOS / Android.">
+  <meta name="keywords" content="NoteCheck, pre-stage, pitch check, pitch tool, reference pitch, key check, vocalist, musician, offline, note check">
+  <meta name="author" content="last8">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://last8.jp/notecheck/en/">
+  <link rel="alternate" hreflang="ja" href="https://last8.jp/notecheck/">
+  <link rel="alternate" hreflang="en" href="https://last8.jp/notecheck/en/">
+  <link rel="alternate" hreflang="x-default" href="https://last8.jp/notecheck/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NoteCheck — Instant Pitch Reference for Musicians">
+  <meta property="og:description" content="Launches in 0.5s. Offline. No ads. Instantly check notes, keys, and chords in 30 seconds before going on stage.">
+  <meta property="og:url" content="https://last8.jp/notecheck/en/">
+  <meta property="og:site_name" content="NoteCheck">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NoteCheck — Instant Pitch Reference for Musicians">
+  <meta name="twitter:description" content="Launches in 0.5s. Offline. No ads. A lightweight pitch tool for the 30 seconds before you go on stage.">
+
+  <!-- Schema.org: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NoteCheck",
+    "description": "A lightweight pitch tool for musicians to instantly check notes, keys, and chords in 30 seconds before going on stage.",
+    "applicationCategory": "MusicApplication",
+    "operatingSystem": "iOS 15+, Android 10+",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Launches in under 0.5 seconds",
+      "Sound latency under 10ms",
+      "Fully offline",
+      "No ads",
+      "Keyboard view + Note name buttons",
+      "Fixed dark mode (low-light friendly)",
+      "Sustain mode",
+      "Now Playing large display"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "last8"
+    },
+    "url": "https://last8.jp/notecheck/en/",
+    "installUrl": [
+      "https://apps.apple.com/app/notecheck/",
+      "https://play.google.com/apps/testing/jp.last8.notecheck.app"
+    ]
+  }
+  </script>
+
+  <!-- Schema.org: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is NoteCheck?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NoteCheck is a lightweight pitch tool built for musicians to instantly check notes, keys, and chords in 30 seconds before going on stage. It's not an instrument app — it's a dedicated pre-stage reference tool. Launches in under 0.5 seconds, works fully offline, and has zero ads."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there an app to quickly check pitch before going on stage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NoteCheck is purpose-built for pre-stage pitch checking. It launches in under 0.5 seconds, plays notes with a single tap, and works offline. Unlike piano apps, it strips away everything you don't need and features a fixed dark mode UI designed for dim backstage environments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does NoteCheck work offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. NoteCheck works 100% offline with zero network communication. It works reliably at live venues, rehearsal studios, and anywhere with poor Wi-Fi."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is NoteCheck different from a piano app?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Piano apps are designed for playing music — they're slow to launch, have ads, and are packed with features. NoteCheck is optimized for just one thing: the 30-second pitch check before you go on stage. It launches in 0.5s, has zero ads, and fits on a single screen. It's a reference tool, not an instrument."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can vocalists use NoteCheck for reference pitch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Turn on Sustain mode to hold a reference note and match your voice to it. Tap a note name button like 'C#4' for instant access to any pitch — perfect for warming up before stage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is NoteCheck free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. NoteCheck is completely free with all features available. There are zero ads. Pro features (additional tones, chord mode, etc.) may be added in the future, but core features will remain free forever."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work in dark environments (backstage, green room)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. NoteCheck uses a fixed dark mode design — no blinding white screens in dim backstage areas. The currently playing note name is displayed at 32pt+ for easy visibility even in low light."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What sound does NoteCheck produce?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NoteCheck generates a pure sine wave via real-time oscillator synthesis. It outputs accurate pitch based on A4=440Hz, 12-tone equal temperament. No PCM samples are used, which keeps the app size small and startup fast. Sound latency is under 10ms."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What input methods does NoteCheck have?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NoteCheck offers two input methods: (1) Keyboard view — a 2-octave piano-style keyboard for checking pitch sequences. (2) Note name buttons (Notepad) — tap C, C#, D, D#... directly. Perfect for guitarists, vocalists, and anyone who thinks in note names rather than piano keys."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is NoteCheck different from asking ChatGPT about pitch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChatGPT can give you music knowledge as text, but it can't play actual sounds. NoteCheck lets you hear the actual note the moment you tap it. It works offline and launches in 0.5 seconds — ready to use when time is limited before stage. It's a fundamentally different experience: hearing vs. reading."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-card: #161b22;
+      --bg-card-hover: #1c2230;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-glow: rgba(88, 166, 255, 0.15);
+      --green: #3fb950;
+      --border: #30363d;
+      --max-w: 960px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== Header ===== */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      margin-left: 24px;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent-glow);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(88, 166, 255, 0.2);
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    /* ===== Definition (1-line for AI) ===== */
+    .definition {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 0 auto 60px;
+      max-width: 720px;
+      text-align: center;
+    }
+    .definition p {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.8;
+    }
+    .definition p strong {
+      color: var(--accent);
+    }
+
+    /* ===== Specs ===== */
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+    .spec-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    .spec-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--green);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .spec-label {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ===== Section Common ===== */
+    section {
+      margin-bottom: 80px;
+    }
+    section h2 {
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    section .section-sub {
+      color: var(--text-muted);
+      font-size: 16px;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    /* ===== Features ===== */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .feature-card:hover {
+      border-color: var(--accent);
+      background: var(--bg-card-hover);
+    }
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== Use Cases ===== */
+    .use-cases {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .use-case {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .use-case-persona {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .use-case h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .use-case p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== Comparison ===== */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .comparison-table th {
+      background: rgba(88, 166, 255, 0.08);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .comparison-table td:first-child {
+      font-weight: 500;
+    }
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: #f85149; }
+    .partial { color: #d29922; }
+
+    /* ===== FAQ ===== */
+    .faq-list {
+      max-width: 720px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+    .faq-q {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .faq-q::before {
+      content: "Q.";
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .faq-a {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      padding-left: 24px;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      text-align: center;
+      padding: 60px 0;
+      background: linear-gradient(180deg, transparent, rgba(88, 166, 255, 0.03));
+      border-radius: 16px;
+      margin-bottom: 80px;
+    }
+    .cta h2 {
+      margin-bottom: 12px;
+    }
+    .cta p {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-size: 16px;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 4px 20px rgba(88, 166, 255, 0.3);
+    }
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+    }
+    .btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: var(--text);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .hero { padding: 48px 0 40px; }
+      .specs { grid-template-columns: repeat(2, 1fr); }
+      .comparison-table { font-size: 13px; }
+      .comparison-table th,
+      .comparison-table td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <a href="/notecheck/en/" class="logo">Note<span>Check</span></a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#compare">Compare</a>
+        <a href="#faq">FAQ</a>
+        <a href="/notecheck/" style="border:1px solid var(--border);padding:4px 10px;border-radius:6px;font-size:13px;">JA</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <div class="container">
+      <div class="hero">
+        <span class="hero-badge">For Musicians — Free / No Ads</span>
+        <h1>Check Your Pitch in<br><em>30 Seconds</em> Before Stage</h1>
+        <p class="hero-sub">
+          NoteCheck lets you instantly check notes, keys, and chords with a keyboard or note name buttons — a lightweight pitch tool built for the moments before you go on stage.
+        </p>
+        <div class="cta-buttons">
+          <a href="https://apps.apple.com/app/notecheck/" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </a>
+          <a href="https://play.google.com/apps/testing/jp.last8.notecheck.app" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+            Google Play
+          </a>
+        </div>
+      </div>
+
+      <!-- 1-line definition (for AI citation) -->
+      <div class="definition">
+        <p>
+          <strong>NoteCheck</strong> is a <strong>lightweight pitch tool for musicians</strong> that lets you instantly check notes, keys, and chords in 30 seconds before going on stage. Not an instrument app — a dedicated "backstage tool" for pre-stage reference. Launches in 0.5s, fully offline, zero ads.
+        </p>
+      </div>
+
+      <!-- Specs -->
+      <div class="specs">
+        <div class="spec-item">
+          <span class="spec-value">0.5s</span>
+          <span class="spec-label">Launch → Ready</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-value">&lt;10ms</span>
+          <span class="spec-label">Sound Latency</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-value">100%</span>
+          <span class="spec-label">Offline</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-value">$0</span>
+          <span class="spec-label">Free / No Ads</span>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <section id="features">
+        <h2>Features</h2>
+        <p class="section-sub">Everyone hears music differently. NoteCheck gives you two ways to access any note.</p>
+        <div class="features">
+          <div class="feature-card">
+            <span class="feature-icon">🎹</span>
+            <h3>Keyboard View</h3>
+            <p>A 2-octave piano-style keyboard for checking pitch sequences and consecutive notes. Centered on your selected octave with labeled C keys.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🎵</span>
+            <h3>Note Name Buttons (Notepad)</h3>
+            <p>C, C#, D, D#... arranged in a 2-row layout. "Give me C#4" → one tap. Perfect for guitarists, theory-minded musicians, and low-light backstage use with large tap targets.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🔊</span>
+            <h3>Now Playing — Large Display</h3>
+            <p>The currently playing note name appears at 32pt+ at the top of the screen. Visible at a glance even in dim backstage areas. Syncs with both keyboard and notepad.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🔒</span>
+            <h3>Sustain Mode</h3>
+            <p>Tap to start, tap again to stop. Hold a reference note and match your pitch. Perfect for vocalists checking their key. When off, sound plays only while pressing.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🌙</span>
+            <h3>Fixed Dark Mode</h3>
+            <p>Backstage and green rooms are dark. Fixed dark mode means no blinding screens — always high-visibility UI in low-light environments.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Specs -->
+      <section id="tech">
+        <h2>Technical Specs</h2>
+        <p class="section-sub">No PCM samples. Lightweight design powered by real-time oscillator synthesis.</p>
+        <div class="features">
+          <div class="feature-card">
+            <h3>Oscillator Synthesis</h3>
+            <p>Generates sine waves in real-time. No PCM sample files means minimal app size. Outputs accurate pitch at A4=440Hz, 12-tone equal temperament.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Native Audio Engine</h3>
+            <p>iOS: AVAudioEngine + AVAudioSourceNode. Android: Oboe / AudioTrack. Uses each platform's lowest-latency audio API to achieve under 10ms sound output.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Envelope Design</h3>
+            <p>Attack: 5ms, Release: 200ms. Eliminates click noise while ensuring instant note onset. No velocity — consistent volume for clear, audible reference tones.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Use Cases -->
+      <section id="use-cases">
+        <h2>Use Cases</h2>
+        <p class="section-sub">30 seconds before stage. That's when NoteCheck helps.</p>
+        <div class="use-cases">
+          <div class="use-case">
+            <div class="use-case-persona">Vocalist</div>
+            <h3>Pre-Stage Reference Pitch</h3>
+            <p>Check the key of your next song. Turn on Sustain mode, hold your reference note, match your voice. One tap on a note name button gets you there instantly.</p>
+          </div>
+          <div class="use-case">
+            <div class="use-case-persona">Guitarist / Bassist</div>
+            <h3>Note Name Pitch Check</h3>
+            <p>"What key is the next song — F#?" Tap F# on the notepad and hear it instantly. No piano skills required, just tap the note name.</p>
+          </div>
+          <div class="use-case">
+            <div class="use-case-persona">Keyboardist</div>
+            <h3>Verify Chords by Ear</h3>
+            <p>"Is this progression Dm7?" Check each note on the keyboard view. Quick confirmation across a 2-octave range.</p>
+          </div>
+          <div class="use-case">
+            <div class="use-case-persona">Band Leader / Session Player</div>
+            <h3>Pre-Rehearsal Key Sync</h3>
+            <p>"OK, next song is in Bb." Play Bb on NoteCheck to align everyone's ears. Offline — no venue Wi-Fi needed.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparison -->
+      <section id="compare">
+        <h2>NoteCheck vs Other Apps</h2>
+        <p class="section-sub">NoteCheck is not a piano app, not a tuner, not a DAW. It's a dedicated tool for one thing: pre-stage pitch checking.</p>
+        <div style="overflow-x: auto;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Criteria</th>
+                <th>NoteCheck</th>
+                <th>Piano App</th>
+                <th>Tuner</th>
+                <th>ChatGPT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Launch Speed</td>
+                <td class="check">0.5s</td>
+                <td class="partial">2–5s</td>
+                <td class="partial">1–3s</td>
+                <td class="cross">15–30s</td>
+              </tr>
+              <tr>
+                <td>Plays Sound</td>
+                <td class="check">&#10003; Instant on tap</td>
+                <td class="check">&#10003;</td>
+                <td class="cross">&#10007; Measure only</td>
+                <td class="cross">&#10007; Text only</td>
+              </tr>
+              <tr>
+                <td>Ads</td>
+                <td class="check">None</td>
+                <td class="cross">Yes (free ver)</td>
+                <td class="partial">Varies</td>
+                <td class="check">None</td>
+              </tr>
+              <tr>
+                <td>Offline</td>
+                <td class="check">&#10003; Fully supported</td>
+                <td class="check">&#10003;</td>
+                <td class="check">&#10003;</td>
+                <td class="cross">&#10007; Internet required</td>
+              </tr>
+              <tr>
+                <td>Low-light UI</td>
+                <td class="check">&#10003; Fixed dark mode</td>
+                <td class="cross">&#10007; White background</td>
+                <td class="partial">Varies</td>
+                <td class="cross">&#10007;</td>
+              </tr>
+              <tr>
+                <td>Steps to Sound</td>
+                <td class="check">One tap</td>
+                <td class="partial">Multiple screens</td>
+                <td>—</td>
+                <td class="cross">Type → Wait → Read</td>
+              </tr>
+              <tr>
+                <td>Latency</td>
+                <td class="check">&lt;10ms</td>
+                <td class="partial">50–200ms</td>
+                <td>—</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Purpose</td>
+                <td><strong>Pitch reference</strong></td>
+                <td>Performance</td>
+                <td>Pitch measurement</td>
+                <td>Knowledge</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <h2>FAQ</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">What is NoteCheck?</div>
+            <div class="faq-a">NoteCheck is a lightweight pitch tool for musicians to instantly check notes, keys, and chords in 30 seconds before going on stage. It's not an instrument app — it's a dedicated pre-stage reference tool. Launches in under 0.5 seconds, works fully offline, and has zero ads.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Is there an app to quickly check pitch before going on stage?</div>
+            <div class="faq-a">NoteCheck is purpose-built for pre-stage pitch checking. It launches in under 0.5 seconds, plays notes with a single tap, and works offline. Unlike piano apps, it strips away everything you don't need and features a fixed dark mode UI for backstage use.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Does NoteCheck work offline?</div>
+            <div class="faq-a">Yes. NoteCheck works 100% offline with zero network communication. It works reliably at live venues, rehearsal studios, and anywhere with poor Wi-Fi.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How is NoteCheck different from a piano app?</div>
+            <div class="faq-a">Piano apps are built for playing — they're slow to launch, show ads, and have too many features. NoteCheck is optimized for one thing: the 30-second pitch check before stage. It launches in 0.5s, has zero ads, and fits on a single screen.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Can vocalists use it for reference pitch?</div>
+            <div class="faq-a">Yes. Turn on Sustain mode to hold a reference note and match your voice. Tap a note name like "C#4" for instant access — perfect for warming up before stage.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Is NoteCheck free?</div>
+            <div class="faq-a">Yes. NoteCheck is completely free with all features unlocked. Zero ads. Pro features may be added in the future, but core features will remain free forever.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Does it work in dark environments?</div>
+            <div class="faq-a">Yes. NoteCheck uses a fixed dark mode — no blinding screens backstage. The currently playing note is displayed at 32pt+ for easy visibility in low light.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">What sound does it produce?</div>
+            <div class="faq-a">Pure sine wave via real-time oscillator synthesis. A4=440Hz, 12-tone equal temperament. No PCM samples, so the app is tiny and launches fast. Latency is under 10ms.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">What input methods are available?</div>
+            <div class="faq-a">Two input methods: (1) Keyboard view — a 2-octave piano layout for pitch sequences. (2) Note name buttons — tap C, C#, D directly. Perfect for anyone who thinks in note names.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How is NoteCheck different from asking ChatGPT?</div>
+            <div class="faq-a">ChatGPT gives music knowledge as text but can't play sounds. NoteCheck lets you hear the actual note the moment you tap. Works offline, launches in 0.5s, and is ready when time is limited before stage.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="cta" id="download">
+        <h2>Make Your Last 30 Seconds Count.</h2>
+        <p>NoteCheck — Free / No Ads / Fully Offline</p>
+        <div class="cta-buttons">
+          <a href="https://apps.apple.com/app/notecheck/" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Download on App Store
+          </a>
+          <a href="https://play.google.com/apps/testing/jp.last8.notecheck.app" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+            Get it on Google Play
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="/notecheck/en/">NoteCheck</a>
+        <a href="https://github.com/keyzen99/NoteCheck-Flutter">GitHub</a>
+        <a href="/privacy/">Privacy Policy</a>
+      </div>
+      <p>&copy; 2026 last8. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

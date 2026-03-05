@@ -37,7 +37,7 @@
       "BPM 20–200 with tap tempo",
       "4 time signatures (4/4, 3/4, 6/8, 12/8)",
       "Auto practice time logging with daily graph",
-      "Background playback (compatible with Spotify)",
+
       "No ads",
       "Completely offline"
     ],
@@ -54,8 +54,7 @@
       { "@type": "Question", "name": "How is BeBeat. different from a metronome?", "acceptedAnswer": { "@type": "Answer", "text": "Traditional metronome apps only produce a click sound. BeBeat. has an 8-track sequencer (Click H/L, Cymbal, HH Open/Close, Snare, Clap, Kick) × 16 steps. Instead of a monotonous click, you can create your own rhythm patterns for practice. It also achieves high-precision timing with P95 jitter < 2.2ms via native audio thread scheduling." } },
       { "@type": "Question", "name": "What instruments can I practice with?", "acceptedAnswer": { "@type": "Answer", "text": "Piano, guitar, bass, vocals (voice training), drums, dance — anything that involves rhythm. BeBeat. is especially designed for pianists, guitarists, and vocalists." } },
       { "@type": "Question", "name": "How is BeBeat. different from GarageBand?", "acceptedAnswer": { "@type": "Answer", "text": "GarageBand is a music production tool — it's slow to launch and packed with features. BeBeat. extracts just the beat mode concept and strips it down to the minimum needed for practice. It launches in under 1 second so you can start practicing immediately." } },
-      { "@type": "Question", "name": "What features are free?", "acceptedAnswer": { "@type": "Answer", "text": "Nearly all features are free: the 8-track × 16-step sequencer, BPM 20–200, 4 time signatures (4/4, 3/4, 6/8, 12/8), auto practice logging, and background playback. There are zero ads." } },
-      { "@type": "Question", "name": "Does it support background playback?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. BeBeat. can play simultaneously with Spotify, Apple Music, YouTube Music, and other music apps. Practice with your favorite music playing alongside BeBeat.'s rhythm." } },
+      { "@type": "Question", "name": "What features are free?", "acceptedAnswer": { "@type": "Answer", "text": "Nearly all features are free: the 8-track × 16-step sequencer, BPM 20–200, 4 time signatures (4/4, 3/4, 6/8, 12/8), and auto practice logging. There are zero ads." } },
       { "@type": "Question", "name": "Does it automatically log practice time?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Sessions over 30 seconds are automatically recorded. You can view today's practice time, consecutive practice days, daily graph, and BPM trends." } },
       { "@type": "Question", "name": "Why is the timing so accurate?", "acceptedAnswer": { "@type": "Answer", "text": "BeBeat. controls note timing on the native audio thread. iOS uses AVAudioEngine + hostTime scheduling. Android uses AudioTrack + a dedicated URGENT_AUDIO priority thread. The rhythm stays stable regardless of UI load. P95 jitter < 2.2ms means 95% of steps fire within 2.2ms of their ideal timing." } },
       { "@type": "Question", "name": "Does it work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. BeBeat. works completely offline with zero network communication. No server connection is needed at startup." } },
@@ -175,8 +174,8 @@
         <h1>Launches in <em>1 Second</em>.<br>A Practice-Only Rhythm Engine.</h1>
         <p class="hero-sub">Build the beat you want in seconds with an 8-track × 16-step sequencer. More freedom than a metronome — designed purely for practice.</p>
         <div class="cta-buttons">
-          <a href="https://apps.apple.com/app/bebeat/id6744129553" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> App Store</a>
-          <a href="https://play.google.com/store/apps/details?id=com.keyzen99.tempo" class="btn btn-secondary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg> Google Play</a>
+          <a href="https://apps.apple.com/jp/app/bebeat/id6759393597" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> App Store</a>
+          <a href="https://play.google.com/apps/testing/jp.last8.tempo.app" class="btn btn-secondary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg> Google Play</a>
         </div>
       </div>
       <div class="definition">
@@ -206,7 +205,6 @@
           <div class="feature-card"><span class="feature-icon">🎼</span><h3>4 Time Signatures</h3><p>4/4, 3/4, 6/8, 12/8. Changing the time signature auto-adjusts the step count. From waltz to shuffle.</p></div>
           <div class="feature-card"><span class="feature-icon">📊</span><h3>Practice Log (Auto)</h3><p>Sessions over 30 seconds are auto-recorded. Track daily practice time, consecutive days, daily graph, and BPM trends.</p></div>
           <div class="feature-card"><span class="feature-icon">🔇</span><h3>No Ads</h3><p>Zero ads, even in the free version. Never breaking your focus during practice — that's a core BeBeat. design principle.</p></div>
-          <div class="feature-card"><span class="feature-icon">🎧</span><h3>Background Playback</h3><p>Plays simultaneously with Spotify, Apple Music, YouTube Music. Practice with your favorite music alongside BeBeat.'s rhythm.</p></div>
         </div>
       </section>
       <section id="engine">
@@ -233,7 +231,7 @@
         <p class="section-sub">For any practice that involves rhythm.</p>
         <div class="use-cases">
           <div class="use-case"><div class="use-case-persona">Pianist</div><h3>A rhythmic backbone for practice</h3><p>Metronome clicks alone aren't enough. BeBeat.'s 8-track patterns give you a more realistic rhythm foundation for practice.</p></div>
-          <div class="use-case"><div class="use-case-persona">Guitarist</div><h3>Rhythm training companion</h3><p>Riff practice, cutting timing drills. Play along with Spotify while BeBeat. keeps the beat steady underneath.</p></div>
+          <div class="use-case"><div class="use-case-persona">Guitarist</div><h3>Rhythm training companion</h3><p>Riff practice, cutting timing drills. BeBeat. keeps the beat steady while you focus on playing.</p></div>
           <div class="use-case"><div class="use-case-persona">Vocalist</div><h3>Tempo keeper for voice training</h3><p>Scale exercises, rhythm drills. Keep accurate timing while working on pitch and delivery.</p></div>
           <div class="use-case"><div class="use-case-persona">Music Teacher</div><h3>Instant rhythm for lessons</h3><p>Adjust BPM to match each student and present a rhythm immediately. Fast launch means you never break the flow of a lesson.</p></div>
         </div>
@@ -250,7 +248,6 @@
               <tr><td>Ads</td><td class="check">None</td><td class="cross">Yes (free ver)</td><td class="check">None</td><td class="check">None</td></tr>
               <tr><td>Timing Precision</td><td class="check">P95 &lt; 2.2ms</td><td class="partial">10–50ms</td><td class="check">High precision</td><td>—</td></tr>
               <tr><td>Practice Log</td><td class="check">&#10003; Auto-recorded</td><td class="cross">&#10007; None</td><td class="cross">&#10007; None</td><td class="cross">&#10007; N/A</td></tr>
-              <tr><td>Background Play</td><td class="check">&#10003; Spotify-compatible</td><td class="partial">Partial</td><td class="partial">Partial</td><td class="cross">&#10007;</td></tr>
               <tr><td>Offline</td><td class="check">&#10003; Fully supported</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007; Internet required</td></tr>
               <tr><td>Purpose</td><td><strong>Practice-only</strong></td><td>Tempo check</td><td>Music production</td><td>Knowledge</td></tr>
             </tbody>
@@ -265,8 +262,7 @@
           <div class="faq-item"><div class="faq-q">How is BeBeat. different from a metronome?</div><div class="faq-a">Traditional metronome apps only produce a click sound. BeBeat. has an 8-track sequencer (Click H/L, Cymbal, HH Open/Close, Snare, Clap, Kick) × 16 steps. Instead of a monotonous click, you can create your own rhythm patterns. It also achieves P95 jitter &lt; 2.2ms via native audio thread scheduling.</div></div>
           <div class="faq-item"><div class="faq-q">What instruments can I practice with?</div><div class="faq-a">Piano, guitar, bass, vocals (voice training), drums, dance — anything that involves rhythm. BeBeat. is especially designed for pianists, guitarists, and vocalists.</div></div>
           <div class="faq-item"><div class="faq-q">How is BeBeat. different from GarageBand?</div><div class="faq-a">GarageBand is a music production tool — slow to launch and packed with features. BeBeat. extracts just the beat concept and strips it to the minimum for practice. Launches in under 1 second so you can start immediately.</div></div>
-          <div class="faq-item"><div class="faq-q">What features are free?</div><div class="faq-a">Nearly all features: the 8-track × 16-step sequencer, BPM 20–200, 4 time signatures (4/4, 3/4, 6/8, 12/8), auto practice logging, and background playback. Zero ads.</div></div>
-          <div class="faq-item"><div class="faq-q">Does it support background playback?</div><div class="faq-a">Yes. BeBeat. plays simultaneously with Spotify, Apple Music, YouTube Music, and other music apps. Practice with your favorite music playing alongside.</div></div>
+          <div class="faq-item"><div class="faq-q">What features are free?</div><div class="faq-a">Nearly all features: the 8-track × 16-step sequencer, BPM 20–200, 4 time signatures (4/4, 3/4, 6/8, 12/8), and auto practice logging. Zero ads.</div></div>
           <div class="faq-item"><div class="faq-q">Does it automatically log practice time?</div><div class="faq-a">Yes. Sessions over 30 seconds are automatically recorded. View today's practice time, consecutive days, daily graph, and BPM trends.</div></div>
           <div class="faq-item"><div class="faq-q">Why is the timing so accurate?</div><div class="faq-a">BeBeat. controls note timing on the native audio thread. iOS uses AVAudioEngine + hostTime scheduling. Android uses AudioTrack + a dedicated URGENT_AUDIO priority thread. The rhythm stays stable regardless of UI load. P95 jitter &lt; 2.2ms means 95% of steps fire within 2.2ms of ideal timing.</div></div>
           <div class="faq-item"><div class="faq-q">Does it work offline?</div><div class="faq-a">Yes. BeBeat. works completely offline with zero network communication. No server connection needed at startup.</div></div>
@@ -277,8 +273,8 @@
         <h2>The Shortest Path to Practice.</h2>
         <p>BeBeat. — Free / No Ads / Fully Offline</p>
         <div class="cta-buttons">
-          <a href="https://apps.apple.com/app/bebeat/id6744129553" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> Download on App Store</a>
-          <a href="https://play.google.com/store/apps/details?id=com.keyzen99.tempo" class="btn btn-secondary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg> Get it on Google Play</a>
+          <a href="https://apps.apple.com/jp/app/bebeat/id6759393597" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> Download on App Store</a>
+          <a href="https://play.google.com/apps/testing/jp.last8.tempo.app" class="btn btn-secondary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg> Get it on Google Play</a>
         </div>
       </div>
     </div>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeBeat. — Practice-Only Rhythm Engine | Launches in 1s, No Ads</title>
+  <meta name="description" content="BeBeat. is an ad-free, practice-only rhythm engine that launches in 1 second. Sample-accurate timing via native audio thread. Create practice beats instantly with an 8-track × 16-step sequencer. iOS / Android.">
+  <meta name="keywords" content="BeBeat, metronome, practice, rhythm, sequencer, no ads, beat, drum machine, practice tool, musician">
+  <meta name="author" content="last8">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://last8.jp/bebeat/en/">
+  <link rel="alternate" hreflang="ja" href="https://last8.jp/bebeat/">
+  <link rel="alternate" hreflang="en" href="https://last8.jp/bebeat/en/">
+  <link rel="alternate" hreflang="x-default" href="https://last8.jp/bebeat/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BeBeat. — Practice-Only Rhythm Engine">
+  <meta property="og:description" content="Ad-free rhythm engine that launches in 1 second. 8-track × 16-step sequencer for instant practice beats. P95 jitter < 2.2ms.">
+  <meta property="og:url" content="https://last8.jp/bebeat/en/">
+  <meta property="og:site_name" content="BeBeat.">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BeBeat. — Practice-Only Rhythm Engine">
+  <meta name="twitter:description" content="Ad-free rhythm engine that launches in 1 second. 8-track × 16-step sequencer for instant practice beats.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BeBeat.",
+    "alternateName": "BeBeat. – Rhythm for Practice",
+    "description": "An ad-free, practice-only rhythm engine that launches in 1 second. Sample-accurate timing via native audio thread scheduling. Create practice beats instantly with an 8-track × 16-step sequencer.",
+    "applicationCategory": "MusicApplication",
+    "operatingSystem": "iOS 13.0+, Android 8.0+",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "featureList": [
+      "8-track × 16-step sequencer",
+      "Native audio thread scheduling (P95 jitter < 2.2ms)",
+      "BPM 20–200 with tap tempo",
+      "4 time signatures (4/4, 3/4, 6/8, 12/8)",
+      "Auto practice time logging with daily graph",
+      "Background playback (compatible with Spotify)",
+      "No ads",
+      "Completely offline"
+    ],
+    "author": { "@type": "Organization", "name": "last8" },
+    "url": "https://last8.jp/bebeat/en/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is BeBeat.?", "acceptedAnswer": { "@type": "Answer", "text": "BeBeat. is an ad-free, practice-only rhythm engine that launches in 1 second. It features an 8-track × 16-step sequencer for creating practice beats instantly, with sample-accurate timing via native audio thread scheduling. It's a step beyond the metronome — more freedom to shape your practice rhythm." } },
+      { "@type": "Question", "name": "How is BeBeat. different from a metronome?", "acceptedAnswer": { "@type": "Answer", "text": "Traditional metronome apps only produce a click sound. BeBeat. has an 8-track sequencer (Click H/L, Cymbal, HH Open/Close, Snare, Clap, Kick) × 16 steps. Instead of a monotonous click, you can create your own rhythm patterns for practice. It also achieves high-precision timing with P95 jitter < 2.2ms via native audio thread scheduling." } },
+      { "@type": "Question", "name": "What instruments can I practice with?", "acceptedAnswer": { "@type": "Answer", "text": "Piano, guitar, bass, vocals (voice training), drums, dance — anything that involves rhythm. BeBeat. is especially designed for pianists, guitarists, and vocalists." } },
+      { "@type": "Question", "name": "How is BeBeat. different from GarageBand?", "acceptedAnswer": { "@type": "Answer", "text": "GarageBand is a music production tool — it's slow to launch and packed with features. BeBeat. extracts just the beat mode concept and strips it down to the minimum needed for practice. It launches in under 1 second so you can start practicing immediately." } },
+      { "@type": "Question", "name": "What features are free?", "acceptedAnswer": { "@type": "Answer", "text": "Nearly all features are free: the 8-track × 16-step sequencer, BPM 20–200, 4 time signatures (4/4, 3/4, 6/8, 12/8), auto practice logging, and background playback. There are zero ads." } },
+      { "@type": "Question", "name": "Does it support background playback?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. BeBeat. can play simultaneously with Spotify, Apple Music, YouTube Music, and other music apps. Practice with your favorite music playing alongside BeBeat.'s rhythm." } },
+      { "@type": "Question", "name": "Does it automatically log practice time?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Sessions over 30 seconds are automatically recorded. You can view today's practice time, consecutive practice days, daily graph, and BPM trends." } },
+      { "@type": "Question", "name": "Why is the timing so accurate?", "acceptedAnswer": { "@type": "Answer", "text": "BeBeat. controls note timing on the native audio thread. iOS uses AVAudioEngine + hostTime scheduling. Android uses AudioTrack + a dedicated URGENT_AUDIO priority thread. The rhythm stays stable regardless of UI load. P95 jitter < 2.2ms means 95% of steps fire within 2.2ms of their ideal timing." } },
+      { "@type": "Question", "name": "Does it work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. BeBeat. works completely offline with zero network communication. No server connection is needed at startup." } },
+      { "@type": "Question", "name": "Are there any ads?", "acceptedAnswer": { "@type": "Answer", "text": "None at all. Even the free version has zero ads. Preserving your focus during practice is a core design principle of BeBeat." } }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #0d1117; --bg-card: #161b22; --bg-card-hover: #1c2230;
+      --text: #e6edf3; --text-muted: #8b949e;
+      --accent: #4A9EF7; --accent-glow: rgba(74, 158, 247, 0.15); --accent-border: rgba(74, 158, 247, 0.2);
+      --green: #3fb950; --border: #30363d; --max-w: 960px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    header { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    header .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 20px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 14px; margin-left: 24px; transition: color 0.2s; }
+    nav a:hover { color: var(--text); }
+    .hero { padding: 80px 0 60px; text-align: center; }
+    .hero-badge { display: inline-block; background: var(--accent-glow); color: var(--accent); font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; border: 1px solid var(--accent-border); }
+    .hero h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; line-height: 1.2; margin-bottom: 20px; letter-spacing: -0.03em; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: clamp(16px, 2.5vw, 20px); color: var(--text-muted); max-width: 640px; margin: 0 auto 32px; line-height: 1.6; }
+    .definition { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin: 0 auto 60px; max-width: 720px; text-align: center; }
+    .definition p { font-size: 18px; font-weight: 500; line-height: 1.8; }
+    .definition p strong { color: var(--accent); }
+    .specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 80px; }
+    .spec-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+    .spec-value { font-size: 28px; font-weight: 800; color: var(--green); display: block; margin-bottom: 4px; }
+    .spec-label { font-size: 14px; color: var(--text-muted); }
+    section { margin-bottom: 80px; }
+    section h2 { font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
+    section .section-sub { color: var(--text-muted); font-size: 16px; margin-bottom: 40px; max-width: 600px; }
+    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .problem-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+    .problem-card.solution { border-color: var(--accent-border); background: linear-gradient(135deg, var(--bg-card), rgba(74, 158, 247, 0.05)); }
+    .problem-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+    .problem-label.issue { color: #f85149; }
+    .problem-label.fix { color: var(--accent); }
+    .problem-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .problem-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; transition: border-color 0.2s, background 0.2s; }
+    .feature-card:hover { border-color: var(--accent); background: var(--bg-card-hover); }
+    .feature-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+    .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .engine-highlight { text-align: center; margin-bottom: 40px; }
+    .engine-value { font-size: clamp(40px, 8vw, 64px); font-weight: 800; color: var(--accent); display: block; letter-spacing: -0.03em; }
+    .engine-label { font-size: 16px; color: var(--text-muted); margin-top: 8px; }
+    .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .use-case { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+    .use-case-persona { font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .use-case h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .use-case p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .comparison-table th, .comparison-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    .comparison-table th { background: rgba(74, 158, 247, 0.08); font-weight: 600; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .comparison-table td:first-child { font-weight: 500; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: #f85149; }
+    .partial { color: #d29922; }
+    .comparison-note { font-size: 13px; color: var(--text-muted); margin-top: 16px; font-style: italic; }
+    .faq-list { max-width: 720px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q { font-size: 16px; font-weight: 600; margin-bottom: 8px; cursor: pointer; display: flex; align-items: baseline; gap: 8px; }
+    .faq-q::before { content: "Q."; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+    .faq-a { font-size: 14px; color: var(--text-muted); line-height: 1.7; padding-left: 24px; }
+    .cta { text-align: center; padding: 60px 0; background: linear-gradient(180deg, transparent, rgba(74, 158, 247, 0.03)); border-radius: 16px; margin-bottom: 80px; }
+    .cta h2 { margin-bottom: 12px; }
+    .cta p { color: var(--text-muted); margin-bottom: 32px; font-size: 16px; }
+    .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); color: #0d1117; }
+    .btn-primary:hover { box-shadow: 0 4px 20px rgba(74, 158, 247, 0.3); }
+    .btn-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); }
+    .btn svg { width: 20px; height: 20px; }
+    footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; font-size: 13px; color: var(--text-muted); }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+    @media (max-width: 600px) {
+      .hero { padding: 48px 0 40px; }
+      .specs { grid-template-columns: repeat(2, 1fr); }
+      .comparison-table { font-size: 13px; }
+      .comparison-table th, .comparison-table td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/bebeat/en/" class="logo">Be<span>Beat.</span></a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#engine">Precision</a>
+        <a href="#compare">Compare</a>
+        <a href="#faq">FAQ</a>
+        <a href="/bebeat/" style="border:1px solid var(--border);padding:4px 10px;border-radius:6px;font-size:13px;">JA</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="hero">
+        <span class="hero-badge">Practice-Only — Free / No Ads</span>
+        <h1>Launches in <em>1 Second</em>.<br>A Practice-Only Rhythm Engine.</h1>
+        <p class="hero-sub">Build the beat you want in seconds with an 8-track × 16-step sequencer. More freedom than a metronome — designed purely for practice.</p>
+        <div class="cta-buttons">
+          <a href="https://apps.apple.com/app/bebeat/id6744129553" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> App Store</a>
+          <a href="https://play.google.com/store/apps/details?id=com.keyzen99.tempo" class="btn btn-secondary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg> Google Play</a>
+        </div>
+      </div>
+      <div class="definition">
+        <p><strong>BeBeat.</strong> is an ad-free, <strong>practice-only rhythm engine</strong> that launches in 1 second. It provides sample-accurate timing via native audio thread scheduling, and lets you create practice beats instantly with an 8-track × 16-step sequencer.</p>
+      </div>
+      <div class="specs">
+        <div class="spec-item"><span class="spec-value">1s</span><span class="spec-label">Launch → Play</span></div>
+        <div class="spec-item"><span class="spec-value">&lt;2.2ms</span><span class="spec-label">P95 Jitter</span></div>
+        <div class="spec-item"><span class="spec-value">8×16</span><span class="spec-label">Tracks × Steps</span></div>
+        <div class="spec-item"><span class="spec-value">$0</span><span class="spec-label">Free / No Ads</span></div>
+      </div>
+      <section id="problem">
+        <h2>Eliminate Friction Before Practice</h2>
+        <p class="section-sub">BeBeat. solves every frustration with existing tools.</p>
+        <div class="problem-grid">
+          <div class="problem-card"><div class="problem-label issue">DAW / GarageBand</div><h3>Slow to launch, too many features</h3><p>Opening a DAW just to get a beat playing is overkill. You have to create a project before you can even start practicing.</p></div>
+          <div class="problem-card"><div class="problem-label issue">Metronome Apps</div><h3>Ads interrupt, click sound only</h3><p>Free metronome apps break your focus with ads. A monotonous click gets boring fast, making it hard to sustain practice.</p></div>
+          <div class="problem-card solution"><div class="problem-label fix">BeBeat.</div><h3>1-second launch, no ads, 8 tracks</h3><p>Every unnecessary feature stripped away. Launch → instant sound. 8 tracks of freedom so practice never gets boring.</p></div>
+        </div>
+      </section>
+      <section id="features">
+        <h2>Features</h2>
+        <p class="section-sub">More freedom than a metronome. Built purely for practice.</p>
+        <div class="features">
+          <div class="feature-card"><span class="feature-icon">🥁</span><h3>8 Tracks × 16 Steps</h3><p>Click H/L, Cymbal, HH Open/Close, Snare, Clap, Kick — 8 sounds. Tap to toggle ON/OFF, long-press for accent. Build any rhythm pattern you want.</p></div>
+          <div class="feature-card"><span class="feature-icon">🎯</span><h3>BPM 20–200</h3><p>Three control methods: +/- buttons, slider, and tap tempo. Your last BPM setting is automatically restored on next launch.</p></div>
+          <div class="feature-card"><span class="feature-icon">🎼</span><h3>4 Time Signatures</h3><p>4/4, 3/4, 6/8, 12/8. Changing the time signature auto-adjusts the step count. From waltz to shuffle.</p></div>
+          <div class="feature-card"><span class="feature-icon">📊</span><h3>Practice Log (Auto)</h3><p>Sessions over 30 seconds are auto-recorded. Track daily practice time, consecutive days, daily graph, and BPM trends.</p></div>
+          <div class="feature-card"><span class="feature-icon">🔇</span><h3>No Ads</h3><p>Zero ads, even in the free version. Never breaking your focus during practice — that's a core BeBeat. design principle.</p></div>
+          <div class="feature-card"><span class="feature-icon">🎧</span><h3>Background Playback</h3><p>Plays simultaneously with Spotify, Apple Music, YouTube Music. Practice with your favorite music alongside BeBeat.'s rhythm.</p></div>
+        </div>
+      </section>
+      <section id="engine">
+        <h2>Sample-Accurate Timing</h2>
+        <p class="section-sub">The rhythm stays rock-solid even under heavy UI load. Powered by a native audio thread engine.</p>
+        <div class="engine-highlight"><span class="engine-value">P95 &lt; 2.2ms</span><p class="engine-label">95% of steps fire within 2.2 milliseconds of ideal timing</p></div>
+        <div class="features">
+          <div class="feature-card"><h3>Native Audio Thread</h3><p>iOS: AVAudioEngine + hostTime scheduling. Android: AudioTrack + URGENT_AUDIO priority thread. Timing is controlled on a dedicated thread, independent from the UI.</p></div>
+          <div class="feature-card"><h3>PCM Algorithm Synthesis</h3><p>Drum sounds generated algorithmically — no sample files. Inspired by 808/909 character, tuned to stay out of the way during practice.</p></div>
+          <div class="feature-card"><h3>10× More Precise Than Typical Apps</h3><p>Most metronome apps have 10–50ms of jitter. BeBeat.'s native engine achieves under 2.2ms — over 10 times more precise.</p></div>
+        </div>
+      </section>
+      <section id="log">
+        <h2>Your Practice Time, Quietly Recorded.</h2>
+        <p class="section-sub">Your practice adds up. BeBeat. makes it visible.</p>
+        <div class="features">
+          <div class="feature-card"><span class="feature-icon">📅</span><h3>Daily Graph</h3><p>Visualize weekly and monthly practice time in bar charts. See at a glance which days you practiced and for how long.</p></div>
+          <div class="feature-card"><span class="feature-icon">🔥</span><h3>Practice Streak</h3><p>Consecutive practice days count up automatically. Stay motivated by keeping your streak alive.</p></div>
+          <div class="feature-card"><span class="feature-icon">🔒</span><h3>Fully Local Storage</h3><p>All practice data is stored on your device. No external servers, no data transmission. Your privacy is protected.</p></div>
+        </div>
+      </section>
+      <section id="use-cases">
+        <h2>Who It's For</h2>
+        <p class="section-sub">For any practice that involves rhythm.</p>
+        <div class="use-cases">
+          <div class="use-case"><div class="use-case-persona">Pianist</div><h3>A rhythmic backbone for practice</h3><p>Metronome clicks alone aren't enough. BeBeat.'s 8-track patterns give you a more realistic rhythm foundation for practice.</p></div>
+          <div class="use-case"><div class="use-case-persona">Guitarist</div><h3>Rhythm training companion</h3><p>Riff practice, cutting timing drills. Play along with Spotify while BeBeat. keeps the beat steady underneath.</p></div>
+          <div class="use-case"><div class="use-case-persona">Vocalist</div><h3>Tempo keeper for voice training</h3><p>Scale exercises, rhythm drills. Keep accurate timing while working on pitch and delivery.</p></div>
+          <div class="use-case"><div class="use-case-persona">Music Teacher</div><h3>Instant rhythm for lessons</h3><p>Adjust BPM to match each student and present a rhythm immediately. Fast launch means you never break the flow of a lesson.</p></div>
+        </div>
+      </section>
+      <section id="compare">
+        <h2>BeBeat. vs Metronome Apps</h2>
+        <p class="section-sub">BeBeat. is the evolution of the metronome — purpose-built for practice, surpassing traditional metronomes.</p>
+        <div style="overflow-x: auto;">
+          <table class="comparison-table">
+            <thead><tr><th>Criteria</th><th>BeBeat.</th><th>Metronome App</th><th>DAW / GarageBand</th><th>AI Chat</th></tr></thead>
+            <tbody>
+              <tr><td>Rhythm Patterns</td><td class="check">8-track × 16-step</td><td class="partial">Click only</td><td class="check">Full sequencer</td><td class="cross">&#10007; Can't play</td></tr>
+              <tr><td>Launch Speed</td><td class="check">&lt; 1 second</td><td class="partial">Average</td><td class="cross">Slow (5–10s)</td><td class="cross">15–30s</td></tr>
+              <tr><td>Ads</td><td class="check">None</td><td class="cross">Yes (free ver)</td><td class="check">None</td><td class="check">None</td></tr>
+              <tr><td>Timing Precision</td><td class="check">P95 &lt; 2.2ms</td><td class="partial">10–50ms</td><td class="check">High precision</td><td>—</td></tr>
+              <tr><td>Practice Log</td><td class="check">&#10003; Auto-recorded</td><td class="cross">&#10007; None</td><td class="cross">&#10007; None</td><td class="cross">&#10007; N/A</td></tr>
+              <tr><td>Background Play</td><td class="check">&#10003; Spotify-compatible</td><td class="partial">Partial</td><td class="partial">Partial</td><td class="cross">&#10007;</td></tr>
+              <tr><td>Offline</td><td class="check">&#10003; Fully supported</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="cross">&#10007; Internet required</td></tr>
+              <tr><td>Purpose</td><td><strong>Practice-only</strong></td><td>Tempo check</td><td>Music production</td><td>Knowledge</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="comparison-note">* For music production, DAWs (GarageBand, etc.) are the right tool. BeBeat. is purpose-built for practice.</p>
+      </section>
+      <section id="faq">
+        <h2>FAQ</h2>
+        <div class="faq-list">
+          <div class="faq-item"><div class="faq-q">What is BeBeat.?</div><div class="faq-a">BeBeat. is an ad-free, practice-only rhythm engine that launches in 1 second. It features an 8-track × 16-step sequencer for creating practice beats instantly, with sample-accurate timing via native audio thread scheduling. It's a step beyond the metronome — more freedom to shape your practice rhythm.</div></div>
+          <div class="faq-item"><div class="faq-q">How is BeBeat. different from a metronome?</div><div class="faq-a">Traditional metronome apps only produce a click sound. BeBeat. has an 8-track sequencer (Click H/L, Cymbal, HH Open/Close, Snare, Clap, Kick) × 16 steps. Instead of a monotonous click, you can create your own rhythm patterns. It also achieves P95 jitter &lt; 2.2ms via native audio thread scheduling.</div></div>
+          <div class="faq-item"><div class="faq-q">What instruments can I practice with?</div><div class="faq-a">Piano, guitar, bass, vocals (voice training), drums, dance — anything that involves rhythm. BeBeat. is especially designed for pianists, guitarists, and vocalists.</div></div>
+          <div class="faq-item"><div class="faq-q">How is BeBeat. different from GarageBand?</div><div class="faq-a">GarageBand is a music production tool — slow to launch and packed with features. BeBeat. extracts just the beat concept and strips it to the minimum for practice. Launches in under 1 second so you can start immediately.</div></div>
+          <div class="faq-item"><div class="faq-q">What features are free?</div><div class="faq-a">Nearly all features: the 8-track × 16-step sequencer, BPM 20–200, 4 time signatures (4/4, 3/4, 6/8, 12/8), auto practice logging, and background playback. Zero ads.</div></div>
+          <div class="faq-item"><div class="faq-q">Does it support background playback?</div><div class="faq-a">Yes. BeBeat. plays simultaneously with Spotify, Apple Music, YouTube Music, and other music apps. Practice with your favorite music playing alongside.</div></div>
+          <div class="faq-item"><div class="faq-q">Does it automatically log practice time?</div><div class="faq-a">Yes. Sessions over 30 seconds are automatically recorded. View today's practice time, consecutive days, daily graph, and BPM trends.</div></div>
+          <div class="faq-item"><div class="faq-q">Why is the timing so accurate?</div><div class="faq-a">BeBeat. controls note timing on the native audio thread. iOS uses AVAudioEngine + hostTime scheduling. Android uses AudioTrack + a dedicated URGENT_AUDIO priority thread. The rhythm stays stable regardless of UI load. P95 jitter &lt; 2.2ms means 95% of steps fire within 2.2ms of ideal timing.</div></div>
+          <div class="faq-item"><div class="faq-q">Does it work offline?</div><div class="faq-a">Yes. BeBeat. works completely offline with zero network communication. No server connection needed at startup.</div></div>
+          <div class="faq-item"><div class="faq-q">Are there any ads?</div><div class="faq-a">None at all. Even the free version has zero ads. Preserving focus during practice is a core design principle of BeBeat.</div></div>
+        </div>
+      </section>
+      <div class="cta" id="download">
+        <h2>The Shortest Path to Practice.</h2>
+        <p>BeBeat. — Free / No Ads / Fully Offline</p>
+        <div class="cta-buttons">
+          <a href="https://apps.apple.com/app/bebeat/id6744129553" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> Download on App Store</a>
+          <a href="https://play.google.com/store/apps/details?id=com.keyzen99.tempo" class="btn btn-secondary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg> Get it on Google Play</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="/bebeat/en/">BeBeat.</a>
+        <a href="/notecheck/en/">NoteCheck</a>
+        <a href="/bebeat/privacy/">Privacy Policy</a>
+        <a href="mailto:last8.dev@gmail.com">Contact</a>
+      </div>
+      <p>&copy; 2026 last8 by Kentaro Yamamoto. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

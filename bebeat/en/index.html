@@ -39,7 +39,7 @@
       "Auto practice time logging with daily graph",
 
       "No ads",
-      "Completely offline"
+      "Works offline (anonymous analytics opt-in)"
     ],
     "author": { "@type": "Organization", "name": "last8" },
     "url": "https://last8.jp/bebeat/en/"
@@ -57,7 +57,7 @@
       { "@type": "Question", "name": "What features are free?", "acceptedAnswer": { "@type": "Answer", "text": "Nearly all features are free: the 8-track × 16-step sequencer, BPM 20–200, 4 time signatures (4/4, 3/4, 6/8, 12/8), and auto practice logging. There are zero ads." } },
       { "@type": "Question", "name": "Does it automatically log practice time?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Sessions over 30 seconds are automatically recorded. You can view today's practice time, consecutive practice days, daily graph, and BPM trends." } },
       { "@type": "Question", "name": "Why is the timing so accurate?", "acceptedAnswer": { "@type": "Answer", "text": "BeBeat. controls note timing on the native audio thread. iOS uses AVAudioEngine + hostTime scheduling. Android uses AudioTrack + a dedicated URGENT_AUDIO priority thread. The rhythm stays stable regardless of UI load. P95 jitter < 2.2ms means 95% of steps fire within 2.2ms of their ideal timing." } },
-      { "@type": "Question", "name": "Does it work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. BeBeat. works completely offline with zero network communication. No server connection is needed at startup." } },
+      { "@type": "Question", "name": "Does it work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. BeBeat. works offline — no server connection is needed at startup. If you opt in to anonymous usage analytics, minimal data is sent to Firebase Analytics; otherwise, there is zero network communication." } },
       { "@type": "Question", "name": "Are there any ads?", "acceptedAnswer": { "@type": "Answer", "text": "None at all. Even the free version has zero ads. Preserving your focus during practice is a core design principle of BeBeat." } }
     ]
   }
@@ -265,7 +265,7 @@
           <div class="faq-item"><div class="faq-q">What features are free?</div><div class="faq-a">Nearly all features: the 8-track × 16-step sequencer, BPM 20–200, 4 time signatures (4/4, 3/4, 6/8, 12/8), and auto practice logging. Zero ads.</div></div>
           <div class="faq-item"><div class="faq-q">Does it automatically log practice time?</div><div class="faq-a">Yes. Sessions over 30 seconds are automatically recorded. View today's practice time, consecutive days, daily graph, and BPM trends.</div></div>
           <div class="faq-item"><div class="faq-q">Why is the timing so accurate?</div><div class="faq-a">BeBeat. controls note timing on the native audio thread. iOS uses AVAudioEngine + hostTime scheduling. Android uses AudioTrack + a dedicated URGENT_AUDIO priority thread. The rhythm stays stable regardless of UI load. P95 jitter &lt; 2.2ms means 95% of steps fire within 2.2ms of ideal timing.</div></div>
-          <div class="faq-item"><div class="faq-q">Does it work offline?</div><div class="faq-a">Yes. BeBeat. works completely offline with zero network communication. No server connection needed at startup.</div></div>
+          <div class="faq-item"><div class="faq-q">Does it work offline?</div><div class="faq-a">Yes. BeBeat. works offline — no server connection is needed at startup. If you opt in to anonymous usage analytics, minimal data is sent to Firebase Analytics; otherwise, there is zero network communication.</div></div>
           <div class="faq-item"><div class="faq-q">Are there any ads?</div><div class="faq-a">None at all. Even the free version has zero ads. Preserving focus during practice is a core design principle of BeBeat.</div></div>
         </div>
       </section>

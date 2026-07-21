@@ -34,7 +34,7 @@
     "featureList": [
       "8トラック×16ステップのシーケンサー",
       "ネイティブオーディオスレッド（P95 jitter < 2.2ms）",
-      "BPM 20〜200（タップテンポ対応）",
+      "BPM 20〜240（タップテンポ対応）",
       "4種類の拍子（4/4・3/4・6/8・12/8）",
       "練習時間の自動記録（日別グラフ・連続日数）",
 
@@ -54,7 +54,7 @@
       { "@type": "Question", "name": "メトロノームとBeBeat.の違いは何ですか？", "acceptedAnswer": { "@type": "Answer", "text": "一般的なメトロノームアプリはクリック音のみですが、BeBeat.は8トラック（Click H/L・Cymbal・HH Open/Close・Snare・Clap・Kick）×16ステップのシーケンサーを備えています。単調なクリック音ではなく、自分好みのリズムパターンを作って練習できます。また、ネイティブオーディオスレッドによる高精度なタイミング制御（P95 jitter < 2.2ms）を実現しています。" } },
       { "@type": "Question", "name": "どの楽器の練習に使えますか？", "acceptedAnswer": { "@type": "Answer", "text": "ピアノ、ギター、ベース、ボーカル（ボイトレ）、ドラム、ダンスなど、リズムが関わるあらゆる練習に使えます。特にピアノ練習者、ギタリスト、ボーカリスト向けに設計されています。" } },
       { "@type": "Question", "name": "GarageBandとの違いは何ですか？", "acceptedAnswer": { "@type": "Answer", "text": "GarageBandは音楽制作ツールであり、起動に時間がかかり機能が多すぎます。BeBeat.はGarageBandのビートモード部分だけを抜き出して極限まで軽量化した、練習専用の道具です。起動は1秒以内、すぐに練習を開始できます。" } },
-      { "@type": "Question", "name": "無料で使える機能は何ですか？", "acceptedAnswer": { "@type": "Answer", "text": "無料版でもリズムエンジンのほぼ全機能を使えます。8トラック×16ステップのシーケンサー、BPM 20〜200、4種類の拍子（4/4・3/4・6/8・12/8）、練習時間の自動記録が無料です。広告も一切ありません。" } },
+      { "@type": "Question", "name": "無料で使える機能は何ですか？", "acceptedAnswer": { "@type": "Answer", "text": "無料版でもリズムエンジンのほぼ全機能を使えます。8トラック×16ステップのシーケンサー、BPM 20〜240、4種類の拍子（4/4・3/4・6/8・12/8）、練習時間の自動記録が無料です。広告も一切ありません。" } },
       { "@type": "Question", "name": "練習時間は自動で記録されますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。30秒以上の再生セッションは自動的に記録されます。今日の練習時間、連続練習日数、日別グラフ、BPMトレンドを確認できます。" } },
       { "@type": "Question", "name": "なぜタイミングが正確なのですか？", "acceptedAnswer": { "@type": "Answer", "text": "BeBeat.はネイティブオーディオスレッド上で発音タイミングを制御しています。iOSではAVAudioEngine + hostTimeスケジューリング、AndroidではAudioTrack + 専用スレッド（URGENT_AUDIO優先度）を使用しています。UIの負荷に影響されない、安定したリズムを実現しています。P95 jitter < 2.2msは、95%のステップが理想タイミングから2.2ms以内の誤差で発音されることを意味します。" } },
       { "@type": "Question", "name": "オフラインで動作しますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。BeBeat.はオフラインで動作します。起動時もサーバーへの接続は不要です。匿名の使用状況データ送信（オプトイン）を許可した場合のみ、Firebase Analyticsへの通信が発生しますが、許可しなければ通信は一切行いません。" } },
@@ -201,7 +201,7 @@
         <p class="section-sub">メトロノームを超える自由度と、練習に特化した設計。</p>
         <div class="features">
           <div class="feature-card"><span class="feature-icon">🥁</span><h3>8トラック × 16ステップ</h3><p>Click H/L・Cymbal・HH Open/Close・Snare・Clap・Kickの8音色。タップでON/OFF、長押しでアクセント。自分好みのリズムパターンを自由に作成。</p></div>
-          <div class="feature-card"><span class="feature-icon">🎯</span><h3>BPM 20〜200</h3><p>+/-ボタン・スライダー・タップテンポの3つの操作方法。前回のBPM設定は自動復元。</p></div>
+          <div class="feature-card"><span class="feature-icon">🎯</span><h3>BPM 20〜240</h3><p>+/-ボタン・スライダー・タップテンポの3つの操作方法。前回のBPM設定は自動復元。</p></div>
           <div class="feature-card"><span class="feature-icon">🎼</span><h3>4種類の拍子</h3><p>4/4・3/4・6/8・12/8に対応。拍子を変更するとステップ数が自動調整。今後も対応拍子を追加予定。</p></div>
           <div class="feature-card"><span class="feature-icon">📊</span><h3>練習ログ（自動記録）</h3><p>30秒以上のセッションを自動記録。今日の練習時間・連続日数・日別グラフ・BPMトレンドで積み重ねを可視化。</p></div>
           <div class="feature-card"><span class="feature-icon">🔇</span><h3>広告なし</h3><p>無料版でも広告ゼロ。練習中に広告で集中を壊さない。それがBeBeat.の設計思想。</p></div>
@@ -262,7 +262,7 @@
           <div class="faq-item"><div class="faq-q">メトロノームとBeBeat.の違いは？</div><div class="faq-a">一般的なメトロノームアプリはクリック音のみですが、BeBeat.は8トラック（Click H/L・Cymbal・HH Open/Close・Snare・Clap・Kick）×16ステップのシーケンサーを備えています。単調なクリック音ではなく、自分好みのリズムパターンを作って練習できます。また、P95 jitter &lt; 2.2msの高精度タイミング制御を実現しています。</div></div>
           <div class="faq-item"><div class="faq-q">どの楽器の練習に使えますか？</div><div class="faq-a">ピアノ、ギター、ベース、ボーカル（ボイトレ）、ドラム、ダンスなど、リズムが関わるあらゆる練習に使えます。特にピアノ練習者、ギタリスト、ボーカリスト向けに設計されています。</div></div>
           <div class="faq-item"><div class="faq-q">GarageBandとの違いは？</div><div class="faq-a">GarageBandは音楽制作ツールであり、起動に時間がかかり機能が多すぎます。BeBeat.はGarageBandのビートモード部分だけを抜き出して極限まで軽量化した、練習専用の道具です。起動は1秒以内、すぐに練習を開始できます。</div></div>
-          <div class="faq-item"><div class="faq-q">無料で使える機能は？</div><div class="faq-a">無料版でもリズムエンジンのほぼ全機能を使えます。8トラック×16ステップのシーケンサー、BPM 20〜200、4種類の拍子（4/4・3/4・6/8・12/8）、練習時間の自動記録が無料です。広告も一切ありません。</div></div>
+          <div class="faq-item"><div class="faq-q">無料で使える機能は？</div><div class="faq-a">無料版でもリズムエンジンのほぼ全機能を使えます。8トラック×16ステップのシーケンサー、BPM 20〜240、4種類の拍子（4/4・3/4・6/8・12/8）、練習時間の自動記録が無料です。広告も一切ありません。</div></div>
           <div class="faq-item"><div class="faq-q">練習時間は自動で記録されますか？</div><div class="faq-a">はい。30秒以上の再生セッションは自動的に記録されます。今日の練習時間、連続練習日数、日別グラフ、BPMトレンドを確認できます。</div></div>
           <div class="faq-item"><div class="faq-q">なぜタイミングが正確なのですか？</div><div class="faq-a">BeBeat.はネイティブオーディオスレッド上で発音タイミングを制御しています。iOSではAVAudioEngine + hostTimeスケジューリング、AndroidではAudioTrack + 専用スレッドを使用。UIの負荷に影響されない安定したリズムを実現。P95 jitter &lt; 2.2msは、95%のステップが理想タイミングから2.2ms以内で発音されることを示します。</div></div>
           <div class="faq-item"><div class="faq-q">オフラインで動作しますか？</div><div class="faq-a">はい。BeBeat.はオフラインで動作します。起動時もサーバーへの接続は不要です。匿名の使用状況データ送信（オプトイン）を許可した場合のみ、Firebase Analyticsへの通信が発生しますが、許可しなければ通信は一切行いません。</div></div>

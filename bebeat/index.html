@@ -39,7 +39,7 @@
       "練習時間の自動記録（日別グラフ・連続日数）",
 
       "広告なし",
-      "オフライン動作（匿名アナリティクスはオプトイン）"
+      "オフライン動作（利用統計は既定で送信。設定からオフにできます）"
     ],
     "author": { "@type": "Organization", "name": "last8" },
     "url": "https://last8.jp/bebeat/"
@@ -57,7 +57,7 @@
       { "@type": "Question", "name": "無料で使える機能は何ですか？", "acceptedAnswer": { "@type": "Answer", "text": "無料版でもリズムエンジンのほぼ全機能を使えます。8トラック×16ステップのシーケンサー、BPM 20〜240、4種類の拍子（4/4・3/4・6/8・12/8）、練習時間の自動記録が無料です。広告も一切ありません。" } },
       { "@type": "Question", "name": "練習時間は自動で記録されますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。30秒以上の再生セッションは自動的に記録されます。今日の練習時間、連続練習日数、日別グラフ、BPMトレンドを確認できます。" } },
       { "@type": "Question", "name": "なぜタイミングが正確なのですか？", "acceptedAnswer": { "@type": "Answer", "text": "BeBeat.はネイティブオーディオスレッド上で発音タイミングを制御しています。iOSではAVAudioEngine + hostTimeスケジューリング、AndroidではAudioTrack + 専用スレッド（URGENT_AUDIO優先度）を使用しています。UIの負荷に影響されない、安定したリズムを実現しています。P95 jitter < 2.2msは、95%のステップが理想タイミングから2.2ms以内の誤差で発音されることを意味します。" } },
-      { "@type": "Question", "name": "オフラインで動作しますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。BeBeat.はオフラインで動作します。起動時もサーバーへの接続は不要です。匿名の使用状況データ送信（オプトイン）を許可した場合のみ、Firebase Analyticsへの通信が発生しますが、許可しなければ通信は一切行いません。" } },
+      { "@type": "Question", "name": "オフラインで動作しますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。BeBeat.の練習機能はすべてオフラインで動作します。起動時もサーバーへの接続は不要です。例外として、利用統計を Firebase Analytics へ送信するためにネットワークを使用します（既定でオン。設定からオフにできます）。" } },
       { "@type": "Question", "name": "広告はありますか？", "acceptedAnswer": { "@type": "Answer", "text": "一切ありません。無料版でも広告は表示されません。練習中の集中を壊さないことがBeBeat.の設計思想です。" } }
     ]
   }
@@ -223,7 +223,7 @@
         <div class="features">
           <div class="feature-card"><span class="feature-icon">📅</span><h3>日別グラフ</h3><p>週間・月間の練習時間を棒グラフで可視化。どの日にどれだけ練習したか一目でわかる。</p></div>
           <div class="feature-card"><span class="feature-icon">🔥</span><h3>連続練習日数</h3><p>毎日練習を続けると連続日数がカウントアップ。継続のモチベーションに。</p></div>
-          <div class="feature-card"><span class="feature-icon">🔒</span><h3>完全ローカル保存</h3><p>練習履歴はすべて端末内に保存。外部サーバーへの送信なし。プライバシーも安心。</p></div>
+          <div class="feature-card"><span class="feature-icon">🔒</span><h3>練習履歴は端末内に保存</h3><p>練習履歴は端末内にのみ保存します。利用統計は既定で送信し、設定からオフにできます。</p></div>
         </div>
       </section>
       <section id="use-cases">
@@ -265,7 +265,7 @@
           <div class="faq-item"><div class="faq-q">無料で使える機能は？</div><div class="faq-a">無料版でもリズムエンジンのほぼ全機能を使えます。8トラック×16ステップのシーケンサー、BPM 20〜240、4種類の拍子（4/4・3/4・6/8・12/8）、練習時間の自動記録が無料です。広告も一切ありません。</div></div>
           <div class="faq-item"><div class="faq-q">練習時間は自動で記録されますか？</div><div class="faq-a">はい。30秒以上の再生セッションは自動的に記録されます。今日の練習時間、連続練習日数、日別グラフ、BPMトレンドを確認できます。</div></div>
           <div class="faq-item"><div class="faq-q">なぜタイミングが正確なのですか？</div><div class="faq-a">BeBeat.はネイティブオーディオスレッド上で発音タイミングを制御しています。iOSではAVAudioEngine + hostTimeスケジューリング、AndroidではAudioTrack + 専用スレッドを使用。UIの負荷に影響されない安定したリズムを実現。P95 jitter &lt; 2.2msは、95%のステップが理想タイミングから2.2ms以内で発音されることを示します。</div></div>
-          <div class="faq-item"><div class="faq-q">オフラインで動作しますか？</div><div class="faq-a">はい。BeBeat.はオフラインで動作します。起動時もサーバーへの接続は不要です。匿名の使用状況データ送信（オプトイン）を許可した場合のみ、Firebase Analyticsへの通信が発生しますが、許可しなければ通信は一切行いません。</div></div>
+          <div class="faq-item"><div class="faq-q">オフラインで動作しますか？</div><div class="faq-a">はい。BeBeat.の練習機能はすべてオフラインで動作します。起動時もサーバーへの接続は不要です。例外として、利用統計を Firebase Analytics へ送信するためにネットワークを使用します（既定でオン。設定からオフにできます）。</div></div>
           <div class="faq-item"><div class="faq-q">広告はありますか？</div><div class="faq-a">一切ありません。無料版でも広告は表示されません。練習中の集中を壊さないことがBeBeat.の設計思想です。</div></div>
         </div>
       </section>

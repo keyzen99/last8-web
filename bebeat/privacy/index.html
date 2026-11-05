@@ -35,6 +35,8 @@
     .updated { color: var(--text-muted); font-size: 14px; margin-bottom: 48px; }
     h2 { font-size: 22px; font-weight: 700; margin: 48px 0 16px; color: var(--accent); }
     h3 { font-size: 17px; font-weight: 600; margin: 28px 0 8px; }
+    h4 { font-size: 15px; font-weight: 600; margin: 20px 0 6px; }
+    .policy-meta { margin-top: 48px; font-size: 14px; }
     p, li { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
     ul { padding-left: 20px; margin: 8px 0; }
     strong { color: var(--text); }
@@ -62,137 +64,153 @@
   <main>
     <div class="container">
       <h1>Privacy Policy / プライバシーポリシー</h1>
-      <p class="updated">Last updated: 2026-06-28</p>
+      <p class="updated">Last updated: 2026-11-05</p>
 
       <h2>日本語</h2>
+      <p><strong>BeBeat. – Rhythm for Practice</strong>（以下「本アプリ」）は、Last8（開発者：Kentaro Yamamoto、所在地：日本）が提供するリズム練習アプリケーションです。本プライバシーポリシーでは、本アプリにおけるデータの取り扱いについて説明します。</p>
 
-      <h3>1. 収集する情報</h3>
-      <p>BeBeat. は、<strong>個人を特定する情報（氏名・メールアドレス・電話番号等）を一切収集しません。</strong></p>
+      <h3>1. 概要</h3>
       <ul>
-        <li>アカウント登録: 不要</li>
-        <li>氏名、メールアドレス、電話番号等の個人を特定する情報: 収集しません</li>
-        <li>広告 SDK / トラッキング: なし</li>
-        <li><strong>既定の状態では、いかなるデータも外部に送信しません</strong></li>
-        <li>利用者が明示的に同意した場合に限り、匿名の利用統計データを送信します（詳細は「4. アナリティクス・トラッキング」を参照）</li>
+        <li>アカウント登録は不要です。氏名・メールアドレス・電話番号などをお尋ねすることはありません。</li>
+        <li>練習履歴は端末内にのみ保存します。</li>
+        <li><strong>製品改善のため、利用統計を既定で Firebase Analytics（Google LLC 提供）へ送信します。</strong> 送信内容は「4. 利用統計の送信」のとおりで、設定画面からいつでもオフにできます。</li>
+        <li>広告は表示しません。広告 SDK は組み込んでおらず、広告識別子（IDFA）も使いません。</li>
       </ul>
 
       <h3>2. 端末内に保存されるデータ</h3>
-      <p>ユーザー体験の向上のため、以下のデータを<strong>端末内にのみ</strong>保存します。</p>
+      <p>次のデータはお使いの端末内にのみ保存します。</p>
       <table>
-        <thead><tr><th>データ</th><th>内容</th><th>保存場所</th></tr></thead>
+        <thead><tr><th>データ</th><th>内容</th></tr></thead>
         <tbody>
-          <tr><td>練習セッション履歴</td><td>BPM、拍子、開始時刻、終了時刻、練習時間（秒）</td><td>SharedPreferences</td></tr>
-          <tr><td>アプリ設定</td><td>最後に使用した BPM、パターン選択</td><td>SharedPreferences</td></tr>
+          <tr><td>練習セッション履歴</td><td>BPM、拍子、開始時刻、終了時刻、練習時間（秒）、練習したパターンの識別子</td></tr>
+          <tr><td>アプリ設定</td><td>最後に使用した BPM、拍子とリズム、保存したパターン、Bluetooth 機器名ごとの同期調整値、利用統計のオン／オフ</td></tr>
         </tbody>
       </table>
-      <p><strong>重要:</strong></p>
-      <ul>
-        <li>これらの練習履歴データ本体は端末のローカルストレージにのみ保存され、外部サーバーへ送信されることはありません</li>
-        <li>アプリをアンインストールすると、これらのデータは完全に削除されます</li>
-        <li>端末の設定からアプリのデータを消去することでも削除できます</li>
-      </ul>
+      <p>アプリをアンインストールすると、これらのデータは削除されます。</p>
 
       <h3>3. データの第三者との共有</h3>
-      <p>当アプリは、ユーザーの明示的な同意なしにデータを第三者と共有しません。広告ネットワークやソーシャルメディア SDK は組み込まれていません。</p>
-      <p>匿名使用状況データの送信に同意した場合のみ、Firebase Analytics（Google LLC 提供）を通じて以下のデータが匿名で収集されます:</p>
-      <ul>
-        <li>アプリの起動回数</li>
-        <li>練習セッションの時間・BPM・拍子設定</li>
-      </ul>
-      <p>個人を特定する情報（氏名、メールアドレス等）は一切収集されません。</p>
+      <p>利用統計の送信先は Firebase Analytics（Google LLC）のみです。それ以外の第三者へデータを共有・販売することはありません。データブローカーへの提供や、他社のデータとの組み合わせも行いません。</p>
 
-      <h3>4. アナリティクス・トラッキング</h3>
-      <p>v0.3.0 より、<strong>オプトイン方式</strong>の匿名使用状況データ収集を導入しました。</p>
+      <h3>4. 利用統計の送信</h3>
+      <h4>送信するデータ</h4>
+      <p>本アプリが送信するイベントは次のとおりです。</p>
       <ul>
-        <li>初回起動時に同意ダイアログが表示されます</li>
-        <li>「許可しない」を選択した場合、データは一切送信されません</li>
-        <li>同意後もいつでも設定を変更できます</li>
-        <li>収集されるデータは完全に匿名です</li>
+        <li>アプリの起動</li>
+        <li>練習の開始（BPM、拍子）</li>
+        <li>練習の終了（練習時間、BPM）。30秒未満の練習は送信しません。</li>
       </ul>
-      <p>同意しない場合、アプリの全機能は従来どおり端末内のみで動作します。</p>
+      <p>これに加えて、Firebase Analytics が自動で次の情報を収集します。</p>
+      <ul>
+        <li>アプリインスタンス ID（アプリのインストールごとに Firebase が生成する識別子）</li>
+        <li>初回起動・セッション開始・利用時間などの自動収集イベント</li>
+        <li>機種、OS バージョン、アプリのバージョン、言語、国・地域などの情報</li>
+      </ul>
+      <p>自動で収集される項目の詳細は <a href="https://support.google.com/analytics/answer/9234069">Google のヘルプ</a> をご覧ください。</p>
+      <p>これらのデータを、お客様の氏名や連絡先などと結び付けることはありません。データは Google のサーバー（日本国外を含む場合があります）で処理されます。</p>
+      <h4>送信しないデータ</h4>
+      <p>端末内の練習履歴そのもの、保存したパターン、Bluetooth 機器名、音声は送信しません。本アプリはマイクを使用しません。</p>
+      <h4>オフにする方法</h4>
+      <p>メイン画面右上の歯車アイコンから設定画面を開き、「Share anonymous usage data」のスイッチをオフにしてください。オフの間、上記のデータは送信されません。オフにしても、すでに送信されたデータは削除されません。</p>
+      <h4>以前の同意画面で選択された方</h4>
+      <ul>
+        <li>v0.3.6 以前の同意画面で許可しなかった方は、アップデート後もオフのままです。</li>
+        <li>許可した方、および同意画面で選択しなかった方はオンです。</li>
+        <li>アプリを再インストールすると設定は初期状態（オン）に戻ります。</li>
+      </ul>
+      <h4>データの取り扱い</h4>
+      <p>Firebase Analytics（Google）のデータの取り扱いについては、<a href="https://firebase.google.com/support/privacy">Firebase のプライバシー情報</a> および <a href="https://policies.google.com/privacy">Google プライバシーポリシー</a> をご覧ください。</p>
 
       <h3>5. 子どものプライバシー</h3>
-      <p>本アプリは特定の年齢層を対象としていませんが、個人情報を収集しないため、13歳未満のお子様が使用した場合でも個人情報が収集されることはありません。</p>
+      <p>本アプリは特定の年齢層を対象としていません。氏名や連絡先などをお尋ねすることはありません。利用統計の送信は年齢にかかわらず同じ扱いで、設定画面からオフにできます。</p>
 
       <h3>6. セキュリティ</h3>
-      <p>本アプリの練習履歴データ本体は端末内のみに保存され、外部サーバーへ送信されません。端末自体のセキュリティ（パスコード、生体認証等）がデータ保護の手段となります。アナリティクスに同意した場合に送信される匿名の利用統計データは、Google の Firebase Analytics の基準（HTTPS/TLS 送信）に従って取り扱われます。</p>
+      <p>練習履歴は端末内にのみ保存します。端末自体のセキュリティ（パスコード、生体認証等）がデータ保護の手段となります。利用統計は Firebase Analytics の仕組みにより送信されます。</p>
 
       <h3>7. お問い合わせ</h3>
-      <p>本ポリシーに関するご質問やお問い合わせ:</p>
+      <p>本ポリシーに関するご質問やお問い合わせは、以下までご連絡ください。</p>
       <ul>
-        <li>Email: <a href="mailto:last8.dev@gmail.com">last8.dev@gmail.com</a></li>
-        <li>開発者: Last8 / Kentaro Yamamoto</li>
+        <li><strong>Email</strong>: <a href="mailto:last8.dev@gmail.com">last8.dev@gmail.com</a></li>
+        <li><strong>開発者</strong>: Last8 / Kentaro Yamamoto</li>
       </ul>
 
       <h3>8. ポリシーの変更</h3>
       <p>本ポリシーは、アプリの機能追加や法令の変更に応じて更新されることがあります。重要な変更がある場合は、アプリ内またはストアページにてお知らせします。変更は本ページに掲載した時点で有効となります。</p>
 
+      <p class="policy-meta"><strong>最終更新日</strong>: 2026-11-05 / <strong>適用バージョン</strong>: v0.3.7 以降</p>
+
       <hr>
 
       <h2>English</h2>
+      <p><strong>BeBeat. – Rhythm for Practice</strong> (the "App") is a rhythm practice application provided by Last8 (developer: Kentaro Yamamoto, based in Japan). This Privacy Policy explains how the App handles data.</p>
 
-      <h3>1. Information We Collect</h3>
-      <p>BeBeat. <strong>does not collect any personally identifiable information</strong> (such as your name, email address, or phone number).</p>
+      <h3>1. Summary</h3>
       <ul>
-        <li>No account registration is required</li>
-        <li>We do not request your name, email address, phone number, or any other personally identifiable information</li>
-        <li>No advertising / tracking SDKs</li>
-        <li><strong>By default, no data is transmitted externally</strong></li>
-        <li>Only if you explicitly consent, anonymous usage statistics are sent (see "4. Analytics &amp; Tracking")</li>
+        <li>No account is needed. The App never asks for your name, email address, or phone number.</li>
+        <li>Your practice history is stored only on your device.</li>
+        <li><strong>To improve the product, the App sends usage statistics to Firebase Analytics (provided by Google LLC) by default.</strong> Section 4 lists what is sent. You can turn this off in Settings at any time.</li>
+        <li>The App shows no ads, contains no advertising SDK, and does not use the advertising identifier (IDFA).</li>
       </ul>
 
       <h3>2. Data Stored on Your Device</h3>
-      <p>To enhance user experience, the App stores the following data <strong>locally on your device only</strong>:</p>
+      <p>The following data is stored only on your device.</p>
       <table>
-        <thead><tr><th>Data</th><th>Description</th><th>Storage</th></tr></thead>
+        <thead><tr><th>Data</th><th>Contents</th></tr></thead>
         <tbody>
-          <tr><td>Practice session history</td><td>BPM, time signature, start/end time, duration (seconds)</td><td>SharedPreferences</td></tr>
-          <tr><td>App settings</td><td>Last used BPM, pattern selection</td><td>SharedPreferences</td></tr>
+          <tr><td>Practice session history</td><td>BPM, time signature, start time, end time, duration (seconds), identifier of the pattern practiced</td></tr>
+          <tr><td>App settings</td><td>Last used BPM, time signature and rhythm, saved patterns, Bluetooth sync adjustment per device name, usage statistics on/off</td></tr>
         </tbody>
       </table>
-      <p><strong>Important:</strong></p>
-      <ul>
-        <li>This practice history data is stored exclusively in the device's local storage and is never transmitted to external servers</li>
-        <li>Uninstalling the App completely removes all stored data</li>
-        <li>You can also clear the data through your device's app settings</li>
-      </ul>
+      <p>Uninstalling the App deletes this data.</p>
 
-      <h3>3. Third-Party Sharing</h3>
-      <p>The App does not share any data with third parties without your explicit consent. No advertising networks or social media SDKs are integrated into the App.</p>
-      <p>If you opt in to anonymous usage data collection, the following data is collected anonymously via Firebase Analytics (provided by Google LLC):</p>
-      <ul>
-        <li>App open count</li>
-        <li>Practice session duration, BPM, and time signature settings</li>
-      </ul>
-      <p>No personally identifiable information (name, email, etc.) is ever collected.</p>
+      <h3>3. Sharing with Third Parties</h3>
+      <p>Usage statistics are sent only to Firebase Analytics (Google LLC). No data is shared with or sold to any other third party. No data is provided to data brokers or combined with data from other companies.</p>
 
-      <h3>4. Analytics &amp; Tracking</h3>
-      <p>Starting with v0.3.0, the App includes <strong>opt-in</strong> anonymous usage data collection.</p>
+      <h3>4. Usage Statistics</h3>
+      <h4>What is sent</h4>
+      <p>The App sends these events:</p>
       <ul>
-        <li>A consent dialog is shown on first launch</li>
-        <li>If you choose "Don't Allow," no data is transmitted</li>
-        <li>You can change your preference at any time</li>
-        <li>All collected data is fully anonymous</li>
+        <li>App launch</li>
+        <li>Practice start (BPM, time signature)</li>
+        <li>Practice end (duration, BPM). Practice shorter than 30 seconds is not sent.</li>
       </ul>
-      <p>If you do not consent, all app features continue to work entirely on-device as before.</p>
+      <p>In addition, Firebase Analytics automatically collects:</p>
+      <ul>
+        <li>An app instance ID (an identifier Firebase generates for each installation of the App)</li>
+        <li>Automatically collected events such as first open, session start, and engagement time</li>
+        <li>Information such as device model, OS version, app version, language, and country or region</li>
+      </ul>
+      <p>See <a href="https://support.google.com/analytics/answer/9234069">Google's help page</a> for details of what is collected automatically.</p>
+      <p>This data is not connected to your name, contact details, or similar information. It is processed on Google's servers, which may be outside Japan.</p>
+      <h4>What is not sent</h4>
+      <p>The practice history stored on your device, your saved patterns, Bluetooth device names, and audio are not sent. The App does not use the microphone.</p>
+      <h4>How to turn it off</h4>
+      <p>Tap the gear icon at the top right of the main screen to open Settings, then turn off "Share anonymous usage data". While it is off, the data above is not sent. Turning it off does not delete data that has already been sent.</p>
+      <h4>If you answered the earlier consent screen</h4>
+      <ul>
+        <li>If you declined on the consent screen in v0.3.6 or earlier, the setting stays off after updating.</li>
+        <li>If you allowed it, or did not answer, the setting is on.</li>
+        <li>Reinstalling the App returns the setting to its default (on).</li>
+      </ul>
+      <h4>How the data is handled</h4>
+      <p>For how Firebase Analytics (Google) handles data, see <a href="https://firebase.google.com/support/privacy">Firebase's privacy information</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
 
       <h3>5. Children's Privacy</h3>
-      <p>The App is not specifically directed at any particular age group. However, since no personal information is collected, no personal data will be gathered even if the App is used by children under 13 years of age.</p>
+      <p>The App is not aimed at any particular age group and never asks for names or contact details. Usage statistics work the same way regardless of age and can be turned off in Settings.</p>
 
       <h3>6. Security</h3>
-      <p>Your practice history data is stored only on the device and is not transmitted to external servers. Your device's own security measures (passcode, biometric authentication, etc.) serve as the primary means of data protection. If you consent to analytics, the anonymous usage statistics that are sent are handled according to Google's Firebase Analytics standards (HTTPS/TLS).</p>
+      <p>Practice history is stored only on your device, so your device's own security (passcode, biometrics, etc.) protects it. Usage statistics are sent through Firebase Analytics.</p>
 
       <h3>7. Contact</h3>
-      <p>If you have any questions about this policy:</p>
+      <p>For questions about this policy, please contact:</p>
       <ul>
-        <li>Email: <a href="mailto:last8.dev@gmail.com">last8.dev@gmail.com</a></li>
-        <li>Developer: Last8 / Kentaro Yamamoto</li>
+        <li><strong>Email</strong>: <a href="mailto:last8.dev@gmail.com">last8.dev@gmail.com</a></li>
+        <li><strong>Developer</strong>: Last8 / Kentaro Yamamoto</li>
       </ul>
 
       <h3>8. Changes to This Policy</h3>
-      <p>This policy may be updated in response to new features or changes in applicable laws. If significant changes are made, we will notify you through the App or via the store listing. Changes become effective upon posting on this page.</p>
+      <p>This policy may be updated when features are added or laws change. Significant changes will be announced in the App or on the store page. Changes take effect when posted on this page.</p>
 
-      <p style="margin-top: 48px; font-size: 14px;"><strong>Last updated</strong>: June 28, 2026 / <strong>Applicable from</strong>: v0.3.3 onwards</p>
+      <p class="policy-meta"><strong>Last updated</strong>: 2026-11-05 / <strong>Applies to</strong>: v0.3.7 and later</p>
     </div>
   </main>
 

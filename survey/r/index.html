@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#fbfaff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0d14" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<title>結果 | Last8</title>
+<style>
+:root{color-scheme:light dark;--bg:#fbfaff;--surface:#ffffff;--text:#1b1a24;--muted:#5e5c6e;--border:#e2e0ec;--err:#c8173d;--wash:radial-gradient(90% 280px at 15% 0,rgba(255,120,200,.20),transparent 70%),radial-gradient(90% 300px at 90% 0,rgba(110,190,255,.22),transparent 70%),radial-gradient(70% 220px at 50% 0,rgba(120,255,215,.16),transparent 75%);--heading:linear-gradient(100deg,#d4149b 0%,#7a3cff 50%,#0b72e0 100%);--aurora:linear-gradient(115deg,#ff9ed8 0%,#c3a4ff 26%,#8fd3ff 50%,#86f5d6 74%,#ffe7a1 100%);--on-aurora:#17102b}
+@media (prefers-color-scheme:dark){:root{--bg:#0e0d14;--surface:#1a1824;--text:#f4f2ff;--muted:#aaa7bb;--border:#34314a;--err:#ff7b92;--wash:radial-gradient(90% 280px at 15% 0,rgba(255,90,190,.20),transparent 70%),radial-gradient(90% 300px at 90% 0,rgba(80,170,255,.20),transparent 70%),radial-gradient(70% 220px at 50% 0,rgba(90,255,205,.12),transparent 75%);--heading:linear-gradient(100deg,#ff8fd8 0%,#b9a0ff 50%,#7fd0ff 100%)}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--wash),var(--bg);background-repeat:no-repeat;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Segoe UI",Roboto,sans-serif;line-height:1.6;overflow-x:hidden}
+[hidden]{display:none!important}
+main{max-width:640px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:1.3rem;margin:4px 0 12px;overflow-wrap:anywhere}
+h2{font-size:1.05rem;margin:0 0 10px;overflow-wrap:anywhere}
+h3{font-size:.9rem;margin:14px 0 6px;color:var(--muted)}
+.banner{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:0 0 16px;text-align:center;font-weight:700;color:var(--text)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin:0 0 16px;min-width:0}
+.kv{display:flex;flex-wrap:wrap;gap:6px 24px;margin:0 0 4px}
+.kv div{min-width:0}
+.kv b{display:block;font-size:1.5rem;line-height:1.3}
+.kv span{font-size:.8rem;color:var(--muted)}
+.row{display:grid;grid-template-columns:9em 1fr 3em;gap:8px;align-items:center;font-size:.9rem;margin:3px 0}
+.bar{height:12px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--aurora)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+ul.comments{list-style:none;margin:0;padding:0}
+ul.comments li{padding:8px 10px;margin:0 0 6px;border-left:3px solid var(--border);background:var(--bg);border-radius:0 6px 6px 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.92rem}
+.empty{color:var(--muted);font-size:.9rem;margin:0}
+.center{text-align:center;padding:32px 8px}
+button{font:inherit;min-height:48px;padding:10px 20px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text);font-weight:700;cursor:pointer}
+button:disabled{opacity:.55}
+button:focus-visible{outline:3px solid var(--text);outline-offset:2px}
+.foot{font-size:.78rem;color:var(--muted);margin-top:24px}
+</style>
+</head>
+<body>
+<main>
+  <h1 id="title">結果</h1>
+  <div class="banner">仮の金額です。実際の支払いは発生していません</div>
+  <div id="loading" class="center" role="status">読み込み中…</div>
+  <div id="msg" class="center" hidden><p id="msgText"></p></div>
+  <div id="content" hidden></div>
+  <p><button id="reload" type="button">再読み込み</button></p>
+  <p class="foot">運営：Last8</p>
+</main>
+<script src="../config.js"></script>
+<script>
+(function () {
+  "use strict";
+  var API = window.SURVEY_API || "";
+  var RATING_LABEL = ["", "とても悪い", "悪い", "ふつう", "良い", "とても良い"];
+  var RATING_EMOJI = ["", "😞", "🙁", "😐", "🙂", "😍"];
+  var qs = new URLSearchParams(location.search);
+  var eventId = qs.get("e") || "", key = qs.get("k") || "";
+  var $ = function (id) { return document.getElementById(id); };
+
+  function el(tag, text, cls) {
+    var n = document.createElement(tag);
+    if (text !== undefined) n.textContent = text;
+    if (cls) n.className = cls;
+    return n;
+  }
+  function yen(n) { return "¥" + Number(n).toLocaleString("ja-JP"); }
+  function show(w) {
+    $("loading").hidden = w !== "loading";
+    $("msg").hidden = w !== "msg";
+    $("content").hidden = w !== "content";
+  }
+  function msg(t) { $("msgText").textContent = t; show("msg"); }
+
+  function kv(items) {
+    var d = el("div", undefined, "kv");
+    items.forEach(function (it) {
+      var c = el("div");
+      c.appendChild(el("b", it[1]));
+      c.appendChild(el("span", it[0]));
+      d.appendChild(c);
+    });
+    return d;
+  }
+  function bars(rows, max) {
+    var wrap = el("div");
+    rows.forEach(function (r) {
+      var line = el("div", undefined, "row");
+      line.appendChild(el("span", r.label));
+      var bar = el("div", undefined, "bar");
+      var fill = el("i");
+      fill.style.width = (max ? Math.round((r.n / max) * 100) : 0) + "%";
+      bar.appendChild(fill);
+      line.appendChild(bar);
+      line.appendChild(el("span", r.n + "件", "num"));
+      wrap.appendChild(line);
+    });
+    return wrap;
+  }
+  function comments(list) {
+    if (!list || !list.length) return el("p", "コメントはまだありません", "empty");
+    var ul = el("ul", undefined, "comments");
+    list.forEach(function (c) { ul.appendChild(el("li", c)); });
+    return ul;
+  }
+  function amountBlock(card, p) {
+    card.appendChild(kv([["合計（仮）", yen(p.total)], ["押した人数", p.count + "人"]]));
+    card.appendChild(el("h3", "エア投げ銭の分布"));
+    var dist = Array.isArray(p.distribution) ? p.distribution : [];
+    var max = 0;
+    dist.forEach(function (d) { max = Math.max(max, d.count || 0); });
+    card.appendChild(bars(dist.map(function (d) {
+      return { label: d.label + " " + yen(d.amount), n: d.count || 0 };
+    }), max));
+    card.appendChild(el("h3", "ひとこと"));
+    card.appendChild(comments(p.comments));
+  }
+
+  function render(res) {
+    var box = $("content");
+    box.textContent = "";
+    $("title").textContent = res.event.title + "　結果";
+    if (res.role === "organizer") {
+      var top = el("section", undefined, "card");
+      top.appendChild(el("h2", "全体"));
+      top.appendChild(kv([["送信数", res.count + "件"],
+        ["感想の平均（5段階）", res.overall.average === null ? "-" : res.overall.average.toFixed(2)]]));
+      if (res.count === 0) top.appendChild(el("p", "まだ送信がありません", "empty"));
+      var r = res.overall.ratings, max = 0;
+      [1, 2, 3, 4, 5].forEach(function (i) { max = Math.max(max, r[String(i)] || 0); });
+      top.appendChild(el("h3", "感想の分布"));
+      top.appendChild(bars([5, 4, 3, 2, 1].map(function (i) {
+        return { label: RATING_EMOJI[i] + " " + RATING_LABEL[i], n: r[String(i)] || 0 };
+      }), max));
+      top.appendChild(el("h3", "全体へのひとこと"));
+      top.appendChild(comments(res.overall.comments));
+      box.appendChild(top);
+      res.performers.forEach(function (p) {
+        var c = el("section", undefined, "card");
+        c.appendChild(el("h2", p.name));
+        amountBlock(c, p);
+        box.appendChild(c);
+      });
+    } else {
+      var c2 = el("section", undefined, "card");
+      c2.appendChild(el("h2", res.performer.name));
+      if (res.performer.count === 0) c2.appendChild(el("p", "まだ押した人がいません", "empty"));
+      amountBlock(c2, res.performer);
+      box.appendChild(c2);
+    }
+    show("content");
+  }
+
+  var busy = false;
+  function load() {
+    if (busy) return;
+    if (!eventId || !key) { msg("このリンクでは表示できません"); return; }
+    if (!/^https?:\/\//.test(API)) { msg("読み込めませんでした。電波の良い場所で再読み込みしてください"); return; }
+    busy = true;
+    $("reload").disabled = true;
+    show("loading");
+    var ctl = new AbortController();
+    var t = setTimeout(function () { ctl.abort(); }, 20000);
+    fetch(API + "?action=results&e=" + encodeURIComponent(eventId) + "&k=" + encodeURIComponent(key),
+      { credentials: "omit", cache: "no-store", redirect: "follow", referrerPolicy: "no-referrer", signal: ctl.signal })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (res && res.ok) render(res);
+        else if (res && res.error === "forbidden") msg("このリンクでは表示できません");
+        else msg("読み込めませんでした。電波の良い場所で再読み込みしてください");
+      }, function () { msg("読み込めませんでした。電波の良い場所で再読み込みしてください"); })
+      .then(function () { clearTimeout(t); busy = false; $("reload").disabled = false; });
+  }
+  $("reload").addEventListener("click", load);
+  load();
+})();
+</script>
+</body>
+</html>

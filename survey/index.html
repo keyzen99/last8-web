@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#fbfaff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0d14" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<title>エア投げ銭付きアンケート 〜実際に払うなら？〜 | Last8</title>
+<style>
+:root{color-scheme:light dark;--bg:#fbfaff;--surface:#ffffff;--text:#1b1a24;--muted:#5e5c6e;--border:#e2e0ec;--err:#c8173d;--wash:radial-gradient(90% 280px at 15% 0,rgba(255,120,200,.20),transparent 70%),radial-gradient(90% 300px at 90% 0,rgba(110,190,255,.22),transparent 70%),radial-gradient(70% 220px at 50% 0,rgba(120,255,215,.16),transparent 75%);--heading:linear-gradient(100deg,#d4149b 0%,#7a3cff 50%,#0b72e0 100%);--aurora:linear-gradient(115deg,#ff9ed8 0%,#c3a4ff 26%,#8fd3ff 50%,#86f5d6 74%,#ffe7a1 100%);--on-aurora:#17102b}
+@media (prefers-color-scheme:dark){:root{--bg:#0e0d14;--surface:#1a1824;--text:#f4f2ff;--muted:#aaa7bb;--border:#34314a;--err:#ff7b92;--wash:radial-gradient(90% 280px at 15% 0,rgba(255,90,190,.20),transparent 70%),radial-gradient(90% 300px at 90% 0,rgba(80,170,255,.20),transparent 70%),radial-gradient(70% 220px at 50% 0,rgba(90,255,205,.12),transparent 75%);--heading:linear-gradient(100deg,#ff8fd8 0%,#b9a0ff 50%,#7fd0ff 100%)}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--wash),var(--bg);background-repeat:no-repeat;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Segoe UI",Roboto,sans-serif;line-height:1.6;overflow-x:hidden}
+[hidden]{display:none!important}
+main{max-width:480px;margin:0 auto;padding:28px 16px 48px}
+h1{font-size:clamp(28px,9vw,34px);font-weight:700;line-height:1.25;margin:0 0 4px;overflow-wrap:anywhere}
+h2{font-size:20px;font-weight:700;line-height:1.4;margin:0;overflow-wrap:anywhere}
+.subtitle{margin:0 0 10px;font-size:18px;font-weight:600;line-height:1.4}
+.evname{margin:0;font-size:14px;color:var(--text);overflow-wrap:anywhere}
+.lead{margin:0 0 28px;font-size:14px;color:var(--muted)}
+.card{border-top:1px solid var(--border);padding:20px 0 0;margin:20px 0 0;min-width:0}
+@supports (background-clip:text) or (-webkit-background-clip:text){h1{width:fit-content;background:var(--heading);-webkit-background-clip:text;background-clip:text;color:transparent}}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.choices{display:grid;gap:6px;margin:14px 0 0}
+.choices.emoji{grid-template-columns:repeat(5,minmax(0,1fr))}
+.choices input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.choices label{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60px;padding:6px 2px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);cursor:pointer;text-align:center;font-size:22px;line-height:1.2;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.choices label small{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.2;white-space:nowrap}
+.choices input:checked+label{background:var(--aurora);border-color:transparent;color:var(--on-aurora);animation:shimmer 700ms ease-out 1}
+.choices input:checked+label small{color:var(--on-aurora)}
+.choices input:focus-visible+label{outline:2px solid var(--text);outline-offset:2px}
+.coins{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin:14px 0 0}
+button.lv{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;min-height:64px;padding:6px 0;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-size:clamp(11px,3.3vw,14px);font-weight:600;line-height:1.2;white-space:nowrap;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+button.lv:disabled{opacity:1;cursor:default}
+.amt{font-size:clamp(10.5px,3vw,12px);font-weight:400;line-height:1.2;color:var(--muted);font-variant-numeric:tabular-nums}
+button.lv[aria-pressed="true"]{background:var(--aurora);border-color:transparent;color:var(--on-aurora);animation:shimmer 700ms ease-out 1}
+button.lv[aria-pressed="true"] .amt{color:var(--on-aurora)}
+@keyframes shimmer{from{background-size:220% 220%;background-position:100% 100%}to{background-size:100% 100%;background-position:0 0}}
+button.addc{display:block;min-height:44px;margin:8px 0 0;padding:0;border:0;border-radius:0;background:none;color:var(--muted);font-weight:400;font-size:14px;touch-action:manipulation}
+.cbox{margin:4px 0 0}
+textarea{width:100%;min-height:84px;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font:inherit;font-size:16px;resize:vertical}
+textarea:focus-visible{outline:2px solid var(--text);outline-offset:1px}
+.err{color:var(--err);font-size:13px;margin:16px 0 0}
+.note{margin:24px 0 12px;font-size:13px;color:var(--muted);text-align:center}
+.sendbar.stuck{position:sticky;bottom:0;z-index:1;margin:0 -16px;padding:0 16px 10px;background:var(--bg);border-top:1px solid var(--border)}
+.sendbar.stuck .note{margin:8px 0}
+button{font:inherit;min-height:44px;padding:10px 20px;border-radius:10px;border:1px solid var(--border);background:none;color:var(--text);font-weight:600;cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}
+button:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+#submit{display:block;width:100%;height:52px;padding:0;border:0;border-radius:12px;background:var(--aurora);color:var(--on-aurora);font-size:16px;font-weight:700}
+#submit:disabled{opacity:.55}
+.center{text-align:center;padding:32px 8px;color:var(--muted)}
+.center p{margin:0 0 16px}
+.ticket{display:grid;grid-template-columns:1fr auto;margin:8px 0 0;background:var(--aurora);color:var(--on-aurora);border:0;border-radius:12px}
+.tmain{padding:18px 16px;min-width:0}
+.tmain b{display:block;font-size:16px;font-weight:600;line-height:1.4}
+.tmain .ev{margin:6px 0 0;font-size:14px;overflow-wrap:anywhere}
+.tmain .dt{margin:4px 0 0;font-size:13px;color:var(--on-aurora);font-variant-numeric:tabular-nums}
+.tstub{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 16px;border-left:1px dashed rgba(23,16,43,.35);min-width:96px}
+.tstub span{font-size:12px;color:var(--on-aurora)}
+.tstub strong{font-size:36px;line-height:1.1;font-weight:500;font-variant-numeric:tabular-nums}
+.tmsg{margin:24px 0 4px;text-align:center;font-size:16px;font-weight:600}
+.tsub{margin:0 0 4px;text-align:center;font-size:14px;color:var(--muted)}
+.fade{animation:fade .2s ease-out}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.notes{list-style:none;margin:40px 0 0;padding:0;font-size:12px;color:var(--muted)}
+.notes li{margin:0 0 8px}
+@media (max-width:340px){button.lv{white-space:normal;padding:6px 1px;text-align:center}}
+@media (prefers-reduced-motion:reduce){.fade{animation:none}button.lv[aria-pressed="true"],.choices input:checked+label{animation:none}}
+</style>
+</head>
+<body>
+<main>
+  <h1>エア投げ銭付き<br>アンケート</h1>
+  <div id="headsub">
+    <p class="subtitle">〜 実際に払うなら？ 〜</p>
+    <p id="evname" class="evname" hidden></p>
+    <p class="lead">登録なし・押しても支払いは発生しません</p>
+  </div>
+  <div id="loading" class="center" role="status">読み込み中…</div>
+  <div id="msg" class="center" hidden>
+    <p id="msgText"></p>
+    <button id="retry" type="button" hidden>もう一度読み込む</button>
+  </div>
+  <form id="form" hidden novalidate></form>
+  <div id="ticket" hidden></div>
+  <ul class="notes">
+    <li>お名前やメールアドレスはお聞きしません。位置情報も取得しません。</li>
+    <li>内容と送信日時を保存します。</li>
+    <li>送った内容は、主催者、出演者、そのほかイベント関係者と、運営の Last8 が見ます。個人情報（お名前・連絡先など）は書かないでください。</li>
+    <li>半券の表示と連続送信のご案内のため、送信済みの印をこの端末に保存します。</li>
+    <li>運営：Last8</li>
+  </ul>
+</main>
+<script src="config.js"></script>
+<script>
+(function () {
+  "use strict";
+  var API = window.SURVEY_API || "";
+  var RATINGS = [["😞", "とても悪い"], ["🙁", "悪い"], ["😐", "ふつう"], ["🙂", "良い"], ["😍", "とても良い"]];
+  var EVENT_RE = /^[A-Za-z0-9_-]{1,64}$/;
+  var FAIL_TEXT = "送信できませんでした。電波の良い場所でもう一度お試しください";
+  var LOAD_FAIL = "読み込めませんでした。電波の良い場所でもう一度お試しください";
+  var HINT = "どれか1つ押すと送れます";
+
+  var eventId = new URLSearchParams(location.search).get("e") || "";
+  var sentKey = "l8s:sent:" + eventId;
+  var draftKey = "l8s:draft:" + eventId;
+  var $ = function (id) { return document.getElementById(id); };
+  var formEl = $("form"), ev = null, sid = "", cards = [], overall = null;
+
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+      if (k === "text") n.textContent = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    });
+    (kids || []).forEach(function (c) { n.appendChild(c); });
+    return n;
+  }
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function lsDel(k) { try { localStorage.removeItem(k); } catch (e) {} }
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  function newId() {
+    var c = window.crypto;
+    if (c && c.randomUUID) return c.randomUUID();
+    var b = new Uint8Array(16);
+    if (c && c.getRandomValues) c.getRandomValues(b);
+    else for (var i = 0; i < 16; i++) b[i] = Math.floor(Math.random() * 256);
+    var h = Array.prototype.map.call(b, function (x) { return (x < 16 ? "0" : "") + x.toString(16); }).join("");
+    return h.slice(0, 8) + "-" + h.slice(8, 12) + "-" + h.slice(12, 16) + "-" + h.slice(16, 20) + "-" + h.slice(20);
+  }
+
+  function show(which) {
+    $("loading").hidden = which !== "loading";
+    $("msg").hidden = which !== "msg";
+    formEl.hidden = which !== "form";
+    $("ticket").hidden = which !== "ticket";
+    $("headsub").hidden = which === "ticket";
+  }
+  function message(text, retry) {
+    $("msgText").textContent = text;
+    $("retry").hidden = !retry;
+    show("msg");
+  }
+
+  function api(url, opts, timeoutMs) {
+    var ctl = new AbortController();
+    var t = setTimeout(function () { ctl.abort(); }, timeoutMs || 20000);
+    var o = { credentials: "omit", redirect: "follow", cache: "no-store", referrerPolicy: "no-referrer", signal: ctl.signal };
+    Object.keys(opts || {}).forEach(function (k) { o[k] = opts[k]; });
+    return fetch(url, o).then(function (r) { return r.json(); }).then(
+      function (j) { clearTimeout(t); return j; },
+      function (e) { clearTimeout(t); throw e; }
+    );
+  }
+
+  // ---------- 演出（音・振動・弾み） ----------
+  var audioCtx = null;
+  function chime() {
+    try {
+      if (!audioCtx) {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        audioCtx = new AC();
+      }
+      if (audioCtx.state === "suspended") {
+        var rp = audioCtx.resume();
+        if (rp && rp.catch) rp.catch(function () {});
+      }
+      var t0 = audioCtx.currentTime;
+      [[2093, 0], [2637, 0.04]].forEach(function (n) {
+        var osc = audioCtx.createOscillator(), g = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.value = n[0];
+        g.gain.setValueAtTime(0.08, t0 + n[1]);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + n[1] + 0.15);
+        osc.connect(g);
+        g.connect(audioCtx.destination);
+        osc.start(t0 + n[1]);
+        osc.stop(t0 + n[1] + 0.17);
+      });
+    } catch (e) {}
+  }
+  function vibrate() { try { if (navigator.vibrate) navigator.vibrate(10); } catch (e) {} }
+  function reducedMotion() {
+    try { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); } catch (e) { return false; }
+  }
+  function bounce(node) {
+    try {
+      if (node.animate) node.animate([{ transform: "scale(.97)" }, { transform: "scale(1)" }], { duration: 120, easing: "ease-out" });
+    } catch (e) {}
+  }
+
+  // ---------- フォーム構築（一度だけ。入力中は再描画しない） ----------
+  var sending = false, hintShown = false;
+  function radios(name, items, cls) {
+    var wrap = el("div", { "class": "choices " + cls });
+    items.forEach(function (it) {
+      var id = name + "-" + it.value;
+      var input = el("input", { type: "radio", name: name, id: id, value: String(it.value), "aria-label": it.aria });
+      var label = el("label", { "for": id });
+      label.appendChild(el("span", { "aria-hidden": "true", text: it.text }));
+      label.appendChild(el("small", { "aria-hidden": "true", text: it.small }));
+      wrap.appendChild(input);
+      wrap.appendChild(label);
+    });
+    return wrap;
+  }
+  /** 「＋ ひとこと」の折りたたみ。textarea を返す。 */
+  function commentBlock(id, ariaLabel) {
+    var ta = el("textarea", { id: id, maxlength: "300", rows: "3", "aria-label": ariaLabel });
+    var box = el("div", { "class": "cbox", id: id + "-box" }, [ta]);
+    box.hidden = true;
+    var btn = el("button", { type: "button", "class": "addc", "aria-expanded": "false", "aria-controls": id + "-box", text: "＋ ひとこと" });
+    var api2 = {
+      ta: ta, btn: btn, box: box,
+      set: function (open) {
+        box.hidden = !open;
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.textContent = open ? "－ ひとこと" : "＋ ひとこと";
+      }
+    };
+    btn.addEventListener("click", function () {
+      var open = box.hidden;
+      api2.set(open);
+      if (open) ta.focus({ preventScroll: true });
+    });
+    return api2;
+  }
+
+  function refreshCard(c) {
+    c.buttons.forEach(function (x) {
+      x.btn.setAttribute("aria-pressed", x.amount === c.sel ? "true" : "false");
+      x.btn.disabled = sending;
+    });
+  }
+  function refreshAll() { cards.forEach(refreshCard); }
+
+  function pick(c, amount, btn) {
+    if (sending) return;
+    clearHint();
+    if (c.sel === amount) { c.sel = null; refreshCard(c); saveDraft(); return; } // 解除は無音
+    c.sel = amount;
+    refreshCard(c);
+    saveDraft();
+    if (!reducedMotion()) bounce(btn);
+    chime();
+    vibrate();
+  }
+
+  function build() {
+    formEl.textContent = "";
+    cards = [];
+
+
+    ev.performers.forEach(function (p, i) {
+      var c = { pid: p.id, sel: null, buttons: [] };
+      var sec = el("section", { "class": "card" }, [
+        el("h2", { text: p.name })
+      ]);
+      c.coinsEl = el("div", { "class": "coins", role: "group", "aria-label": p.name + "へのエア投げ銭" });
+      ev.levels.forEach(function (lv) {
+        var b = el("button", {
+          type: "button", "class": "lv", "aria-pressed": "false",
+          "aria-label": lv.label + " " + lv.amount.toLocaleString("ja-JP") + "円"
+        }, [el("span", { "aria-hidden": "true", text: lv.label }), el("span", { "class": "amt", "aria-hidden": "true", text: "¥" + lv.amount.toLocaleString("ja-JP") })]);
+        b.addEventListener("click", function () { pick(c, lv.amount, b); });
+        c.coinsEl.appendChild(b);
+        c.buttons.push({ amount: lv.amount, btn: b });
+      });
+      sec.appendChild(c.coinsEl);
+      c.cm = commentBlock("c-" + i, p.name + "へのひとこと");
+      sec.appendChild(c.cm.btn);
+      sec.appendChild(c.cm.box);
+      formEl.appendChild(sec);
+      cards.push(c);
+    });
+
+    var q = el("section", { "class": "card" });
+    q.appendChild(el("h2", { text: "今日のライブ全体は？" }));
+    var fs = el("fieldset", {}, [
+      el("legend", { "class": "sr", text: "今日のライブ全体の感想" }),
+      radios("rating", RATINGS.map(function (r, i) { return { value: i + 1, text: r[0], small: r[1], aria: r[1] }; }), "emoji")
+    ]);
+    q.appendChild(fs);
+    overall = commentBlock("c-overall", "全体へのひとこと");
+    q.appendChild(overall.btn);
+    q.appendChild(overall.box);
+    formEl.appendChild(q);
+
+    var submitErr = el("p", { "class": "err", role: "alert", id: "submitErr" });
+    submitErr.hidden = true;
+    // 出演者が多いとページが長いので、何か入力したら「送る」を画面の下に固定する
+    formEl.appendChild(el("div", { "class": "sendbar", id: "sendbar" }, [
+      submitErr,
+      el("p", { "class": "note", text: "エア投げ銭です。実際の支払いは発生しません" }),
+      el("button", { type: "submit", id: "submit", text: "送る" })
+    ]));
+  }
+
+  function checked(name) {
+    var r = formEl.querySelector('input[name="' + name + '"]:checked');
+    return r ? Number(r.value) : null;
+  }
+  function setChecked(name, v) {
+    var r = formEl.querySelector('input[name="' + name + '"][value="' + v + '"]');
+    if (r) r.checked = true;
+  }
+
+  // ---------- 下書き ----------
+  function saveDraft() {
+    var d = { sid: sid, rating: checked("rating"), comment: overall.ta.value, answers: {} };
+    cards.forEach(function (c) { d.answers[c.pid] = { amount: c.sel, comment: c.cm.ta.value }; });
+    lsSet(draftKey, JSON.stringify(d));
+    updateSendBar();
+  }
+  function levelAmount(v) {
+    return typeof v === "number" && ev.levels.some(function (l) { return l.amount === v; });
+  }
+  function restoreDraft() {
+    var d = null;
+    try { d = JSON.parse(lsGet(draftKey) || "null"); } catch (e) {}
+    if (d && typeof d.sid === "string" && /^[A-Za-z0-9-]{16,64}$/.test(d.sid)) sid = d.sid;
+    else { sid = newId(); return; }
+    if (typeof d.rating === "number" && d.rating >= 1 && d.rating <= 5) setChecked("rating", d.rating);
+    if (typeof d.comment === "string") {
+      overall.ta.value = d.comment.slice(0, 300);
+      if (overall.ta.value) overall.set(true);
+    }
+    cards.forEach(function (c) {
+      var a = d.answers && d.answers[c.pid];
+      if (!a) return;
+      if (levelAmount(a.amount)) c.sel = a.amount;
+      if (typeof a.comment === "string") {
+        c.cm.ta.value = a.comment.slice(0, 300);
+        if (c.cm.ta.value) c.cm.set(true);
+      }
+    });
+    updateSendBar();
+  }
+
+  // ---------- 送信 ----------
+  function isEmpty() {
+    if (checked("rating") !== null || overall.ta.value.trim() !== "") return false;
+    return cards.every(function (c) { return c.sel === null && c.cm.ta.value.trim() === ""; });
+  }
+  function updateSendBar() {
+    $("sendbar").classList.toggle("stuck", !isEmpty());
+  }
+  function clearHint() {
+    if (!hintShown) return;
+    hintShown = false;
+    $("submitErr").hidden = true;
+  }
+  function payload() {
+    return {
+      event_id: eventId, submission_id: sid, rating: checked("rating"), comment: overall.ta.value,
+      answers: cards.map(function (c) { return { performer_id: c.pid, amount: c.sel, comment: c.cm.ta.value }; })
+    };
+  }
+  function postWithRetry(body) {
+    var attempt = 0;
+    function go() {
+      return api(API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(body) }, 35000).then( // サーバーのロック待ち（20秒）より長く待つ
+        function (res) {
+          if (res && res.error === "busy" && attempt < 2) { attempt++; return sleep(1500 * attempt).then(go); }
+          return res;
+        },
+        function (err) {
+          if (attempt < 2) { attempt++; return sleep(1500 * attempt).then(go); }
+          throw err;
+        }
+      );
+    }
+    return go();
+  }
+  function onSubmit(e) {
+    e.preventDefault();
+    if (sending) return;
+    var errEl = $("submitErr"), btn = $("submit");
+    hintShown = false;
+    errEl.hidden = true;
+    if (isEmpty()) {
+      errEl.textContent = HINT;
+      errEl.hidden = false;
+      hintShown = true;
+      return;
+    }
+    sending = true;
+    btn.disabled = true;
+    btn.textContent = "送信中…";
+    refreshAll();
+    postWithRetry(payload()).then(function (res) {
+      if (res && res.ok) {
+        var stub = cleanStub({ number: res.number, date: res.date, title: ev.title });
+        lsSet(sentKey, JSON.stringify(stub));
+        lsDel(draftKey);
+        showTicket(stub, false);
+        return;
+      }
+      var code = res && res.error;
+      if (code === "closed") { message("受付は終了しました", false); return; }
+      if (code === "full") fail("受付数の上限に達したため、送信できませんでした");
+      else if (code === "comment_too_long") fail("ひとことは300文字以内にしてください");
+      else if (code === "empty") fail(HINT);
+      else if (code === "invalid_answers") fail("出演者が変更されました。ページを開き直してください（入力は残ります）");
+      else fail(FAIL_TEXT);
+    }).catch(function () { fail(FAIL_TEXT); }).then(function () { sending = false; refreshAll(); });
+  }
+  function fail(text) {
+    var errEl = $("submitErr"), btn = $("submit");
+    errEl.textContent = text;
+    errEl.hidden = false;
+    btn.disabled = false;
+    btn.textContent = "もう一度送る";
+  }
+
+  // ---------- 半券 ----------
+  /** 保存値・応答値を安全な形へ。壊れた値は null / 空文字にする。 */
+  function cleanStub(o) {
+    var n = o && typeof o.number === "number" && o.number % 1 === 0 && o.number >= 1 && o.number < 1e6 ? o.number : null;
+    var d = o && typeof o.date === "string" && /^\d{4}\.\d{2}\.\d{2}$/.test(o.date) ? o.date : "";
+    var t = o && typeof o.title === "string" ? o.title.slice(0, 200) : "";
+    return { number: n, date: d, title: t };
+  }
+  function readStub(raw) {
+    var o = null;
+    try { o = JSON.parse(raw); } catch (e) {}
+    return cleanStub(o && typeof o === "object" ? o : null); // 古い形式（時刻だけ）や壊れた値でも落ちない
+  }
+  function showTicket(stub, again) {
+    var box = $("ticket");
+    box.textContent = "";
+    var num = stub.number === null ? "---" : String(stub.number).padStart(3, "0");
+    var main = el("div", { "class": "tmain" }, [el("b", { text: "エア投げ銭" })]);
+    if (stub.title) main.appendChild(el("p", { "class": "ev", text: stub.title }));
+    if (stub.date) main.appendChild(el("p", { "class": "dt", text: stub.date }));
+    var tstub = el("div", { "class": "tstub" }, [el("span", { text: "No." }), el("strong", { text: num })]);
+    var ticket = el("div", { "class": "ticket" }, [main, tstub]);
+    box.appendChild(ticket);
+    if (again) box.appendChild(el("p", { "class": "tmsg", text: "送信済みです" }));
+    box.appendChild(el("p", { "class": again ? "tsub" : "tmsg", text: stub.number === null ? "送信しました" : "今夜 " + stub.number + "人目です" }));
+    box.appendChild(el("p", { "class": "tsub", text: "スクショして持ち帰れます" }));
+    show("ticket");
+    box.classList.remove("fade");
+    void box.offsetWidth;
+    box.classList.add("fade");
+  }
+
+  // ---------- 起動 ----------
+  function load() {
+    show("loading");
+    if (!/^https?:\/\//.test(API)) { message(LOAD_FAIL, true); return; }
+    api(API + "?action=event&e=" + encodeURIComponent(eventId)).then(function (res) {
+      if (!res || !res.ok) {
+        message(res && res.error === "not_found" ? "QRコードをもう一度読み取ってください" : LOAD_FAIL,
+          !(res && res.error === "not_found"));
+        return;
+      }
+      ev = res.event;
+      $("evname").textContent = ev.title;
+      $("evname").hidden = false;
+      if (ev.status !== "open") { message("受付は終了しました", false); return; }
+      build();
+      restoreDraft();
+      refreshAll();
+      show("form");
+    }, function () {
+      message(LOAD_FAIL, true);
+    });
+  }
+
+  $("retry").addEventListener("click", load);
+  formEl.addEventListener("submit", onSubmit);
+  formEl.addEventListener("input", function () { if (ev && !sending) { clearHint(); saveDraft(); } });
+  formEl.addEventListener("change", function (e) {
+    if (e.target && e.target.type === "radio" && ev && !sending) { clearHint(); saveDraft(); }
+  });
+
+  if (!EVENT_RE.test(eventId)) message("QRコードをもう一度読み取ってください", false);
+  else {
+    var sent = lsGet(sentKey);
+    if (sent) showTicket(readStub(sent), true);
+    else { sid = newId(); load(); }
+  }
+})();
+</script>
+</body>
+</html>

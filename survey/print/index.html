@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light">
+<title>エア投げ銭付きアンケート QR 印刷 | Last8</title>
+<style>
+:root{color-scheme:light;--text:#1b1a24;--muted:#5e5c6e;--border:#d9d7e3;--err:#c8173d;--pw:210mm;--ph:297mm;--ar:210/297}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#eceaf2;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Segoe UI",Roboto,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+[hidden]{display:none!important}
+.bar{max-width:640px;margin:0 auto;padding:20px 16px 0;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.seg{display:flex}
+button{font:inherit;min-height:44px;padding:10px 20px;border:1px solid var(--border);background:#fff;color:var(--text);font-weight:600;cursor:pointer;touch-action:manipulation}
+.seg button{border-radius:0;min-width:64px}
+.seg button:first-child{border-radius:10px 0 0 10px}
+.seg button:last-child{border-radius:0 10px 10px 0;border-left:0}
+.seg button[aria-pressed="true"]{background:var(--text);border-color:var(--text);color:#fff}
+#print{border-radius:10px;background:#0b72e0;border-color:#0b72e0;color:#fff;margin-left:auto}
+button:disabled{opacity:.55;cursor:not-allowed}
+button:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.hint{max-width:640px;margin:8px auto 0;padding:0 16px;font-size:13px;color:var(--muted)}
+.notice{max-width:640px;margin:14px auto 0;padding:12px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;font-size:14px}
+.notice.warn{color:var(--err);border-color:var(--err)}
+.stage{padding:20px 16px 40px}
+.paper{container-type:inline-size;width:min(var(--pw),100%);aspect-ratio:var(--ar);margin:0 auto;background:#fff;box-shadow:0 2px 14px rgba(27,26,36,.18);overflow:hidden;color:#1b1a24}
+/* cqw は container の content 幅基準なので、余白は内側の要素で取る */
+.inner{width:100%;height:100%;padding:9cqw;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center}
+.top,.bottom{width:100%;display:flex;flex-direction:column;align-items:center}
+/* 見出しは canvas に描く。PDF のグラデーション文字（background-clip も SVG の text も）は、読む環境によって塗りつぶしの箱になる */
+h1{margin:0;width:100%;line-height:0}
+h1 canvas{display:block;width:100%;height:auto}
+.sub{margin:0;font-size:4cqw;font-weight:600;line-height:1.4}
+.evname{margin:1.2cqw 0 0;max-width:100%;font-size:4.6cqw;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;max-height:2.6em;overflow:hidden;overflow-wrap:anywhere}
+.evname span{display:inline-block;max-width:100%}
+#qr{width:60cqw;height:60cqw;flex:none}
+#qr svg{display:block;width:100%;height:100%}
+.how{margin:0;font-size:4.4cqw;font-weight:800;line-height:1.4}
+.nopay{margin:.6cqw 0 0;font-size:3.4cqw;line-height:1.4}
+.url{margin:1.6cqw 0 0;max-width:100%;font-size:2.6cqw;line-height:1.4;color:#5e5c6e;overflow-wrap:anywhere}
+.brand{margin:.8cqw 0 0;font-size:2.8cqw;font-weight:700;line-height:1.4;color:#5e5c6e}
+@media print{
+html,body{background:#fff;margin:0;padding:0}
+.bar,.hint,.notice{display:none!important}
+.stage{padding:0}
+.paper{width:var(--pw);height:calc(var(--ph) - 1mm);aspect-ratio:auto;box-shadow:none;margin:0;break-inside:avoid;page-break-after:avoid}
+}
+</style>
+<style id="pagesz">@page{size:A4 portrait;margin:0}</style>
+</head>
+<body>
+<div class="bar" id="bar">
+  <div class="seg" role="group" aria-label="用紙サイズ">
+    <button type="button" id="sz-a4" aria-pressed="true">A4</button>
+    <button type="button" id="sz-a3" aria-pressed="false">A3</button>
+  </div>
+  <button type="button" id="print">印刷する</button>
+</div>
+<p class="hint" id="hint">パソコンの Chrome で印刷してください。印刷画面で保存先を PDF にすると、コンビニなどでも印刷できます</p>
+<p class="notice" id="guide" hidden></p>
+<p class="notice warn" id="warn" role="alert" hidden></p>
+<div class="stage" id="stage">
+  <div class="paper" id="paper"><div class="inner">
+    <div class="top">
+      <h1><canvas id="title" width="3000" height="800" role="img" aria-label="エア投げ銭付きアンケート"></canvas></h1>
+      <p class="sub">〜 実際に払うなら？ 〜</p>
+      <p class="evname" id="evname" hidden></p>
+    </div>
+    <div id="qr" role="img" aria-label="エア投げ銭付きアンケートの QR コード"></div>
+    <div class="bottom">
+      <p class="how">スマホのカメラで読み取ってください</p>
+      <p class="nopay">登録なし・押しても支払いは発生しません</p>
+      <p class="url" id="url"></p>
+      <p class="brand">Last8</p>
+    </div>
+  </div></div>
+</div>
+<script src="../config.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  function $(id) { return document.getElementById(id); }
+  var API = window.SURVEY_API || "";
+  var SIZES = {
+    a4: { name: "A4", w: 210, h: 297 },
+    a3: { name: "A3", w: 297, h: 420 }
+  };
+
+  // ============================================================
+  // QR エンコーダ（ISO/IEC 18004・バイトモード・誤り訂正 H・v1〜10）
+  // ============================================================
+
+  // バージョン別（誤り訂正 H）: [1ブロックの誤り訂正語数, 群1ブロック数, 群1データ語数, 群2ブロック数, 群2データ語数]
+  var EC_H = [null,
+    [17, 1, 9, 0, 0], [28, 1, 16, 0, 0], [22, 2, 13, 0, 0], [16, 4, 9, 0, 0], [22, 2, 11, 2, 12],
+    [28, 4, 15, 0, 0], [26, 4, 13, 1, 14], [26, 4, 14, 2, 15], [24, 4, 12, 4, 13], [28, 6, 15, 2, 16]
+  ];
+  var ALIGN = [null, [], [6, 18], [6, 22], [6, 26], [6, 30], [6, 34], [6, 22, 38], [6, 24, 42], [6, 26, 46], [6, 28, 50]];
+
+  // GF(256)、原始多項式 0x11d
+  var EXP = [], LOG = [];
+  (function () {
+    var x = 1, i;
+    for (i = 0; i < 255; i++) { EXP[i] = x; LOG[x] = i; x <<= 1; if (x & 0x100) x ^= 0x11d; }
+    for (i = 255; i < 512; i++) EXP[i] = EXP[i - 255];
+  })();
+  function gmul(a, b) { return (a === 0 || b === 0) ? 0 : EXP[LOG[a] + LOG[b]]; }
+
+  function rsGenerator(deg) {
+    var g = [1], i, j, next;
+    for (i = 0; i < deg; i++) {
+      next = [];
+      for (j = 0; j <= g.length; j++) next[j] = 0;
+      for (j = 0; j < g.length; j++) {
+        next[j] ^= g[j];
+        next[j + 1] ^= gmul(g[j], EXP[i]);
+      }
+      g = next;
+    }
+    return g; // 最高次の係数 1 を先頭に持つ（長さ deg+1）
+  }
+
+  function rsRemainder(data, deg) {
+    var gen = rsGenerator(deg), rem = [], i, j, f;
+    for (i = 0; i < deg; i++) rem[i] = 0;
+    for (i = 0; i < data.length; i++) {
+      f = data[i] ^ rem[0];
+      rem.shift();
+      rem.push(0);
+      for (j = 0; j < deg; j++) rem[j] ^= gmul(gen[j + 1], f);
+    }
+    return rem;
+  }
+
+  function utf8Bytes(s) {
+    return Array.from(new TextEncoder().encode(s));
+  }
+
+  function pickVersion(len) {
+    var v, e, dc;
+    for (v = 1; v <= 10; v++) {
+      e = EC_H[v];
+      dc = e[1] * e[2] + e[3] * e[4];
+      if (4 + (v < 10 ? 8 : 16) + 8 * len <= dc * 8) return v;
+    }
+    return 0;
+  }
+
+  // データ語（モード指示子・文字数・本体・終端・パディング）をインターリーブ済みの最終語列にする
+  function buildCodewords(bytes, ver) {
+    var e = EC_H[ver], dcTotal = e[1] * e[2] + e[3] * e[4], bits = [], i, k;
+    function put(val, n) { for (var b = n - 1; b >= 0; b--) bits.push((val >>> b) & 1); }
+    put(4, 4);
+    put(bytes.length, ver < 10 ? 8 : 16);
+    for (i = 0; i < bytes.length; i++) put(bytes[i], 8);
+    for (k = 0; k < 4 && bits.length < dcTotal * 8; k++) bits.push(0);
+    while (bits.length % 8) bits.push(0);
+    var data = [];
+    for (i = 0; i < bits.length; i += 8) {
+      data.push(bits[i] * 128 + bits[i + 1] * 64 + bits[i + 2] * 32 + bits[i + 3] * 16 + bits[i + 4] * 8 + bits[i + 5] * 4 + bits[i + 6] * 2 + bits[i + 7]);
+    }
+    for (k = 0; data.length < dcTotal; k++) data.push(k % 2 === 0 ? 0xEC : 0x11);
+
+    var blocks = [], pos = 0, n, g;
+    for (g = 0; g < 2; g++) {
+      for (n = 0; n < e[1 + g * 2]; n++) {
+        var len = e[2 + g * 2], d = data.slice(pos, pos + len);
+        pos += len;
+        blocks.push({ data: d, ec: rsRemainder(d, e[0]) });
+      }
+    }
+    var out = [], maxLen = e[4] > e[2] ? e[4] : e[2];
+    for (i = 0; i < maxLen; i++) for (k = 0; k < blocks.length; k++) if (i < blocks[k].data.length) out.push(blocks[k].data[i]);
+    for (i = 0; i < e[0]; i++) for (k = 0; k < blocks.length; k++) out.push(blocks[k].ec[i]);
+    return out;
+  }
+
+  function bit(v, i) { return (v >>> i) & 1; }
+
+  function makeMatrix(ver) {
+    var size = 17 + 4 * ver;
+    var m = [], fn = [], y, x;
+    for (y = 0; y < size; y++) { m[y] = []; fn[y] = []; for (x = 0; x < size; x++) { m[y][x] = 0; fn[y][x] = false; } }
+    function setFn(px, py, dark) { m[py][px] = dark ? 1 : 0; fn[py][px] = true; }
+
+    // タイミングパターン
+    for (x = 0; x < size; x++) { setFn(x, 6, x % 2 === 0); setFn(6, x, x % 2 === 0); }
+    // ファインダ + 分離帯
+    function finder(cx, cy) {
+      var dy, dx, d;
+      for (dy = -4; dy <= 4; dy++) for (dx = -4; dx <= 4; dx++) {
+        var px = cx + dx, py = cy + dy;
+        if (px < 0 || py < 0 || px >= size || py >= size) continue;
+        d = Math.max(Math.abs(dx), Math.abs(dy));
+        setFn(px, py, d !== 2 && d !== 4);
+      }
+    }
+    finder(3, 3); finder(size - 4, 3); finder(3, size - 4);
+    // アライメント
+    var pos = ALIGN[ver], i, j;
+    for (i = 0; i < pos.length; i++) for (j = 0; j < pos.length; j++) {
+      if ((i === 0 && j === 0) || (i === 0 && j === pos.length - 1) || (i === pos.length - 1 && j === 0)) continue;
+      for (var dy = -2; dy <= 2; dy++) for (var dx = -2; dx <= 2; dx++) {
+        setFn(pos[i] + dx, pos[j] + dy, Math.max(Math.abs(dx), Math.abs(dy)) !== 1);
+      }
+    }
+    // 形式情報の領域を予約（値は後で書く）+ 暗モジュール
+    drawFormat(m, fn, size, 0, true);
+    // バージョン情報
+    if (ver >= 7) {
+      var rem = ver;
+      for (i = 0; i < 12; i++) rem = (rem << 1) ^ ((rem >>> 11) * 0x1F25);
+      var vbits = (ver << 12) | rem;
+      for (i = 0; i < 18; i++) {
+        var a = size - 11 + i % 3, b = Math.floor(i / 3);
+        setFn(a, b, bit(vbits, i)); setFn(b, a, bit(vbits, i));
+      }
+    }
+    return { size: size, m: m, fn: fn };
+  }
+
+  // 形式情報（誤り訂正 H = 2、BCH(15,5)、マスク 0x5412）
+  function drawFormat(m, fn, size, mask, reserve) {
+    var data = (2 << 3) | mask, rem = data, i;
+    for (i = 0; i < 10; i++) rem = (rem << 1) ^ ((rem >>> 9) * 0x537);
+    var bits = ((data << 10) | rem) ^ 0x5412;
+    function set(x, y, d) { m[y][x] = d ? 1 : 0; fn[y][x] = true; }
+    for (i = 0; i <= 5; i++) set(8, i, bit(bits, i));
+    set(8, 7, bit(bits, 6));
+    set(8, 8, bit(bits, 7));
+    set(7, 8, bit(bits, 8));
+    for (i = 9; i < 15; i++) set(14 - i, 8, bit(bits, i));
+    for (i = 0; i < 8; i++) set(size - 1 - i, 8, bit(bits, i));
+    for (i = 8; i < 15; i++) set(8, size - 15 + i, bit(bits, i));
+    set(8, size - 8, true); // 常に暗のモジュール
+  }
+
+  function placeData(mx, cw) {
+    var size = mx.size, i = 0, right, vert, j, x, y, up;
+    for (right = size - 1; right >= 1; right -= 2) {
+      if (right === 6) right = 5;
+      for (vert = 0; vert < size; vert++) {
+        for (j = 0; j < 2; j++) {
+          x = right - j;
+          up = ((right + 1) & 2) === 0;
+          y = up ? size - 1 - vert : vert;
+          if (!mx.fn[y][x] && i < cw.length * 8) {
+            mx.m[y][x] = bit(cw[i >>> 3], 7 - (i & 7));
+            i++;
+          }
+        }
+      }
+    }
+  }
+
+  function maskHit(mask, x, y) {
+    switch (mask) {
+      case 0: return (x + y) % 2 === 0;
+      case 1: return y % 2 === 0;
+      case 2: return x % 3 === 0;
+      case 3: return (x + y) % 3 === 0;
+      case 4: return (Math.floor(x / 3) + Math.floor(y / 2)) % 2 === 0;
+      case 5: return (x * y) % 2 + (x * y) % 3 === 0;
+      case 6: return ((x * y) % 2 + (x * y) % 3) % 2 === 0;
+      default: return ((x + y) % 2 + (x * y) % 3) % 2 === 0;
+    }
+  }
+
+  // 規格の4つのペナルティ
+  function penalty(m, size) {
+    var score = 0, x, y, k, run, c, dark = 0;
+    // N1: 同色5個以上の連続（行・列）
+    for (k = 0; k < 2; k++) {
+      for (y = 0; y < size; y++) {
+        run = 1;
+        for (x = 1; x <= size; x++) {
+          var cur = x < size ? (k ? m[x][y] : m[y][x]) : -1;
+          var prev = k ? m[x - 1][y] : m[y][x - 1];
+          if (cur === prev) { run++; }
+          else { if (run >= 5) score += 3 + (run - 5); run = 1; }
+        }
+      }
+    }
+    // N2: 2x2 の同色ブロック
+    for (y = 0; y < size - 1; y++) for (x = 0; x < size - 1; x++) {
+      c = m[y][x];
+      if (c === m[y][x + 1] && c === m[y + 1][x] && c === m[y + 1][x + 1]) score += 3;
+    }
+    // N3: 1:1:3:1:1 の暗明パターンの片側に明4個
+    var pa = [1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0], pb = [0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1], s, t, ok1, ok2;
+    for (k = 0; k < 2; k++) for (y = 0; y < size; y++) for (x = 0; x + 11 <= size; x++) {
+      ok1 = true; ok2 = true;
+      for (t = 0; t < 11; t++) {
+        s = k ? m[x + t][y] : m[y][x + t];
+        if (s !== pa[t]) ok1 = false;
+        if (s !== pb[t]) ok2 = false;
+      }
+      if (ok1) score += 40;
+      if (ok2) score += 40;
+    }
+    // N4: 暗モジュールの割合
+    for (y = 0; y < size; y++) for (x = 0; x < size; x++) dark += m[y][x];
+    var total = size * size;
+    score += (Math.ceil(Math.abs(dark * 20 - total * 10) / total) - 1) * 10;
+    return score;
+  }
+
+  // 文字列 → { version, mask, size, modules(=m[y][x]), fn }
+  function encodeQR(text) {
+    var bytes = utf8Bytes(text), ver = pickVersion(bytes.length);
+    if (!ver) return null;
+    var cw = buildCodewords(bytes, ver);
+    var base = makeMatrix(ver);
+    placeData(base, cw);
+    var size = base.size, best = null, mask, x, y;
+    for (mask = 0; mask < 8; mask++) {
+      var m = [], fn = [];
+      for (y = 0; y < size; y++) {
+        m[y] = base.m[y].slice(); fn[y] = base.fn[y].slice();
+        for (x = 0; x < size; x++) if (!fn[y][x] && maskHit(mask, x, y)) m[y][x] ^= 1;
+      }
+      drawFormat(m, fn, size, mask);
+      var p = penalty(m, size);
+      if (!best || p < best.p) best = { p: p, mask: mask, m: m, fn: fn };
+    }
+    return { version: ver, mask: best.mask, size: size, m: best.m, fn: best.fn };
+  }
+
+  // ============================================================
+  // QR の描画（インライン SVG）
+  // ============================================================
+  var NS = "http://www.w3.org/2000/svg";
+  var QUIET = 4;
+  var STOPS = ["#c84b00","#d4149b", "#7a3cff", "#0b72e0", "#0b7f70"];
+
+  function svgEl(name, attrs) {
+    var e = document.createElementNS(NS, name);
+    Object.keys(attrs || {}).forEach(function (k) { e.setAttribute(k, attrs[k]); });
+    return e;
+  }
+
+  function num(v) { return String(Math.round(v * 1000) / 1000); }
+
+  // 角丸の長方形（時計回り）。radii = [左上, 右上, 右下, 左下]
+  function rrect(x, y, w, h, r) {
+    var d = "M" + num(x + r[0]) + " " + num(y);
+    d += "H" + num(x + w - r[1]);
+    if (r[1]) d += "A" + r[1] + " " + r[1] + " 0 0 1 " + num(x + w) + " " + num(y + r[1]);
+    d += "V" + num(y + h - r[2]);
+    if (r[2]) d += "A" + r[2] + " " + r[2] + " 0 0 1 " + num(x + w - r[2]) + " " + num(y + h);
+    d += "H" + num(x + r[3]);
+    if (r[3]) d += "A" + r[3] + " " + r[3] + " 0 0 1 " + num(x) + " " + num(y + h - r[3]);
+    d += "V" + num(y + r[0]);
+    if (r[0]) d += "A" + r[0] + " " + r[0] + " 0 0 1 " + num(x + r[0]) + " " + num(y);
+    return d + "Z";
+  }
+
+  // 中央マークの一辺（モジュール数）。0 ならマークなし
+  function markSize(qr) {
+    if (qr.version > 6) return 0;
+    var n = qr.size, k = Math.floor(Math.sqrt(0.07 * n * n)), y, x, s;
+    if (k % 2 === 0) k--;
+    for (; k >= 3; k -= 2) {
+      s = (n - k) / 2;
+      var clash = false;
+      for (y = s - 1; y <= s + k && !clash; y++) for (x = s - 1; x <= s + k; x++) {
+        if (qr.fn[y][x]) { clash = true; break; }
+      }
+      if (!clash) return k;
+    }
+    return 0;
+  }
+
+  function renderQR(qr) {
+    var n = qr.size, total = n + QUIET * 2, k = markSize(qr), ms = (n - k) / 2;
+    var R = 0.45;
+
+    function inMark(x, y) { return k > 0 && x >= ms && x < ms + k && y >= ms && y < ms + k; }
+    function inFinder(x, y) {
+      return (x < 7 && y < 7) || (x >= n - 7 && y < 7) || (x < 7 && y >= n - 7);
+    }
+    function dark(x, y) {
+      if (x < 0 || y < 0 || x >= n || y >= n) return false;
+      return !!qr.m[y][x] && !inFinder(x, y) && !inMark(x, y);
+    }
+
+    var d = "", x, y;
+    for (y = 0; y < n; y++) for (x = 0; x < n; x++) {
+      if (!dark(x, y)) continue;
+      var u = dark(x, y - 1), r = dark(x + 1, y), b = dark(x, y + 1), l = dark(x - 1, y);
+      d += rrect(x + QUIET, y + QUIET, 1, 1, [
+        (!u && !l) ? R : 0, (!u && !r) ? R : 0, (!b && !r) ? R : 0, (!b && !l) ? R : 0
+      ]);
+    }
+
+    var svg = svgEl("svg", {
+      xmlns: NS, viewBox: "0 0 " + total + " " + total, "data-version": String(qr.version), "data-mask": String(qr.mask),
+      "aria-hidden": "true", focusable: "false"
+    });
+    var defs = svgEl("defs");
+    var grad = svgEl("linearGradient", { id: "qg", gradientUnits: "userSpaceOnUse", x1: "0", y1: "0", x2: String(total), y2: String(total) });
+    STOPS.forEach(function (c, i) {
+      grad.appendChild(svgEl("stop", { offset: num(i / (STOPS.length - 1)), "stop-color": c }));
+    });
+    defs.appendChild(grad);
+    svg.appendChild(defs);
+    svg.appendChild(svgEl("rect", { x: "0", y: "0", width: String(total), height: String(total), fill: "#fff" }));
+    svg.appendChild(svgEl("path", { d: d, fill: "url(#qg)" }));
+
+    // ファインダ: 外 7x7（角丸）の輪、内 5x5 を白く抜き、中心 3x3（角丸）
+    [[0, 0], [n - 7, 0], [0, n - 7]].forEach(function (p) {
+      var fx = p[0] + QUIET, fy = p[1] + QUIET;
+      var ring = rrect(fx, fy, 7, 7, [1.6, 1.6, 1.6, 1.6]) + rrect(fx + 1, fy + 1, 5, 5, [0.8, 0.8, 0.8, 0.8]);
+      svg.appendChild(svgEl("path", { d: ring, fill: "url(#qg)", "fill-rule": "evenodd" }));
+      svg.appendChild(svgEl("path", { d: rrect(fx + 2, fy + 2, 3, 3, [0.8, 0.8, 0.8, 0.8]), fill: "url(#qg)" }));
+    });
+
+    // 中央マーク（白の角丸の台座 + グラデーションのコイン + 白い ♪）
+    if (k > 0) {
+      var mx = ms + QUIET, c = n / 2 + QUIET, cr = k * 0.36;
+      svg.appendChild(svgEl("path", { d: rrect(mx, mx, k, k, [k * 0.18, k * 0.18, k * 0.18, k * 0.18]), fill: "#fff" }));
+      svg.appendChild(svgEl("circle", { cx: num(c), cy: num(c), r: num(cr), fill: "url(#qg)" }));
+      var note = svgEl("g", { transform: "translate(" + num(c) + " " + num(c) + ") scale(" + num(cr) + ")", fill: "#fff" });
+      note.appendChild(svgEl("ellipse", { cx: "-0.22", cy: "0.42", rx: "0.3", ry: "0.21", transform: "rotate(-20 -0.22 0.42)" }));
+      note.appendChild(svgEl("rect", { x: "0.02", y: "-0.52", width: "0.13", height: "0.98" }));
+      note.appendChild(svgEl("path", { d: "M0.02 -0.52L0.15 -0.52C0.17 -0.3 0.58 -0.28 0.52 0.1C0.42 -0.08 0.3 -0.12 0.15 -0.06Z" }));
+      svg.appendChild(note);
+    }
+    return svg;
+  }
+
+  // ============================================================
+  // ページ
+  // ============================================================
+  var params = new URLSearchParams(location.search);
+  var eventId = params.get("e") || "";
+  var size = params.get("size") === "a3" ? "a3" : "a4";
+  var idOk = /^[A-Za-z0-9_-]{1,64}$/.test(eventId);
+  var printBtn = $("print");
+
+  function applySize(key, updateUrl) {
+    var s = SIZES[key];
+    size = key;
+    $("pagesz").textContent = "@page{size:" + s.name + " portrait;margin:0}";
+    document.documentElement.style.setProperty("--pw", s.w + "mm");
+    document.documentElement.style.setProperty("--ph", s.h + "mm");
+    document.documentElement.style.setProperty("--ar", s.w + "/" + s.h);
+    $("sz-a4").setAttribute("aria-pressed", key === "a4" ? "true" : "false");
+    $("sz-a3").setAttribute("aria-pressed", key === "a3" ? "true" : "false");
+    if (updateUrl) {
+      var p = new URLSearchParams(location.search);
+      p.set("size", key);
+      history.replaceState(null, "", location.pathname + "?" + p.toString() + location.hash);
+    }
+  }
+
+  // 3000px は A3 の紙面で約 310dpi
+  function drawTitle() {
+    var c = $("title"), ctx = c.getContext("2d"), first = "エア投げ銭付き";
+    ctx.font = '800 366px -apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Segoe UI",Roboto,sans-serif';
+    ctx.textAlign = "center";
+    var w = ctx.measureText(first).width;
+    var g = ctx.createLinearGradient((c.width - w) / 2, 0, (c.width + w) / 2, 0);
+    g.addColorStop(0, "#d4149b");
+    g.addColorStop(0.5, "#7a3cff");
+    g.addColorStop(1, "#0b72e0");
+    ctx.fillStyle = g;
+    ctx.fillText(first, c.width / 2, 330);
+    ctx.fillText("アンケート", c.width / 2, 747);
+  }
+
+  // 空白の位置でだけ改行する（「第９章」のような語の途中で切らない）
+  function setEventName(title) {
+    var box = $("evname");
+    title.split(/[ 　]+/).forEach(function (part, i) {
+      if (i) box.appendChild(document.createTextNode(" "));
+      var s = document.createElement("span");
+      s.textContent = part;
+      box.appendChild(s);
+    });
+    box.hidden = false;
+  }
+
+  function noQR(text) {
+    $("stage").hidden = true;
+    printBtn.disabled = true;
+    $("hint").hidden = true;
+    $("guide").textContent = text;
+    $("guide").hidden = false;
+  }
+
+  function fetchEvent() {
+    var ctl = new AbortController();
+    var t = setTimeout(function () { ctl.abort(); }, 15000);
+    return fetch(API + "?action=event&e=" + encodeURIComponent(eventId), {
+      credentials: "omit", redirect: "follow", cache: "no-store", referrerPolicy: "no-referrer", signal: ctl.signal
+    }).then(function (r) { return r.json(); }).then(
+      function (j) { clearTimeout(t); return j; },
+      function (e) { clearTimeout(t); throw e; }
+    );
+  }
+
+  function warnFail() {
+    $("warn").textContent = "イベント名を取得できませんでした。通信を確認して、ページを開き直してください。イベントが存在するか確認できていないため、印刷前に QR を読み取って確かめてください。";
+    $("warn").hidden = false;
+    printBtn.disabled = false;
+  }
+
+  $("sz-a4").addEventListener("click", function () { applySize("a4", true); });
+  $("sz-a3").addEventListener("click", function () { applySize("a3", true); });
+  printBtn.addEventListener("click", function () { window.print(); });
+  applySize(size, false);
+  drawTitle();
+
+  if (!idOk) {
+    noQR("イベントIDが指定されていないか、正しくありません。URL の末尾に ?e=イベントID を付けて開いてください。");
+  } else {
+    var link = "https://last8.jp/survey/?e=" + eventId;
+    var qr = encodeQR(link);
+    if (!qr) {
+      noQR("イベントIDが長すぎて QR コードを作れません。");
+    } else {
+      $("qr").appendChild(renderQR(qr));
+      $("url").textContent = "last8.jp/survey/?e=" + eventId;
+      printBtn.disabled = true; // イベントの存在を確かめるまで印刷させない
+      if (!/^https?:\/\//.test(API)) {
+        warnFail();
+      } else {
+        fetchEvent().then(function (res) {
+          if (res && res.ok && res.event) {
+            var title = typeof res.event.title === "string" ? res.event.title : "";
+            if (title) setEventName(title);
+            printBtn.disabled = false;
+          } else if (res && res.error === "not_found") {
+            $("qr").textContent = "";
+            noQR("このイベントは見つかりません。読み取っても開けない QR になるため表示しません。イベントIDを確かめてください。");
+          } else {
+            warnFail();
+          }
+        }, warnFail);
+      }
+    }
+  }
+})();
+</script>
+</body>
+</html>
